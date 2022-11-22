@@ -1,0 +1,10 @@
+<nav>
+    <h2>Reims Événements</h2>
+
+    <ul>
+        <li><a class="{{ app.request.get('_route') == 'accueil' ? 'active' }}" href="{{ path('accueil') }}">Accueil</a></li>
+        <li><a class="{{ app.request.get('_route') == 'evenements' ? 'active' }}" href="{{ path('evenements') }}">Événements</a></li>
+        <li><a class="{{ app.request.get('_route') == 'about' ? 'active' }}" href="{{ path('accueil') }}">À propos</a></li>
+        <li><a class="{{ app.request.get('_route') == 'contact' ? 'active' }}" href="{{ path('contact') }}">Contact</a></li>
+    </ul>
+</nav>
