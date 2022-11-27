@@ -1,0 +1,16 @@
+<nav>
+    <img src="{{ asset('build/images/reims_logo.jpeg') }}" alt="Logo de Reims" />
+
+    <ul>
+        <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">Accueil</a></li>
+        <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">Événements</a></li>
+        <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">À propos</a></li>
+        <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">Contact</a></li>
+
+        {% if app.user %}
+            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+        {% else %}
+            <li><a class="button" href="{{ path('app_login') }}">Se connecter</a></li>
+        {% endif %}
+    </ul>
+</nav>
