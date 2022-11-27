@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "MarianneRegular";
+  src: url("./fonts/marianne/Marianne-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "MarianneBold";
+  src: url("./fonts/marianne/Marianne-Bold.woff") format("woff");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  font-family: MarianneRegular, sans-serif;
+}
+
+h1 {
+  font-family: MarianneBold, sans-serif;
+}
+
+/*# sourceMappingURL=app.css.map */
