@@ -1,0 +1,169 @@
+@font-face {
+  font-family: "MarianneRegular";
+  src: url("./fonts/marianne/Marianne-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "MarianneBold";
+  src: url("./fonts/marianne/Marianne-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "MarianneLight";
+  src: url("./fonts/marianne/Marianne-Light.woff") format("woff");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  font-family: MarianneRegular, sans-serif;
+}
+
+h1 {
+  font-family: MarianneBold, sans-serif;
+  font-size: 50px;
+}
+
+.button {
+  padding: 10px 20px;
+  color: white;
+  background: #4081BC;
+  border: 2px solid #4081BC;
+  border-radius: 5px;
+}
+.button:hover {
+  background-color: transparent;
+  color: #4081BC;
+}
+
+nav {
+  padding: 0 30px;
+  width: 100vw;
+  height: 90px;
+  -webkit-box-shadow: 3px 3px 11.5px -5.5px #dddddd;
+  -moz-box-shadow: 3px 3px 11.5px -5.5px #dddddd;
+  box-shadow: 3px 3px 11.5px -5.5px #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav img {
+  height: 60%;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+nav ul li a {
+  color: black;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+nav ul li a:hover, nav ul li a:active, nav ul li a:focus, nav ul li a.link-active {
+  color: #4081BC;
+}
+
+header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 7% 30px 7%;
+}
+header span,
+header a {
+  color: #4081BC;
+  text-decoration: none;
+  padding-left: 2px;
+}
+header img {
+  height: 40px;
+  transform: translateY(5px);
+}
+
+.search {
+  padding: 0 7%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.search input {
+  position: relative;
+  font-family: MarianneLight;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-bottom: 2px solid #787878;
+  font-size: 18px;
+  padding-left: 35px;
+  padding-bottom: 3px;
+  background: url("../images/search_default.svg") no-repeat left center;
+  outline: none;
+  transition: all 0.4s;
+}
+.search input:active, .search input:focus {
+  background: url("../images/search_active.svg") no-repeat left center;
+  border-bottom: 2px solid #4081BC;
+  color: #4081BC;
+}
+.search .wrapper {
+  margin: 20px 0;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.search .wrapper .icon {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 120px;
+  display: flex;
+  align-items: center;
+}
+.search .wrapper .icon i {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 50%;
+  background: #4081BC;
+}
+.search .wrapper .icon:first-child {
+  left: 0;
+  background: linear-gradient(90deg, #fff 70%, transparent);
+}
+.search .wrapper .icon:first-child i {
+  margin-left: 15px;
+}
+.search .wrapper .icon:last-child {
+  right: 0;
+  background: linear-gradient(-90deg, #fff 70%, transparent);
+}
+.search .wrapper .icon:last-child i {
+  margin-right: 15px;
+}
+.search .wrapper .filters {
+  display: flex;
+  list-style: none;
+  gap: 13px;
+}
+.search .wrapper .filters .filter {
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: white;
+  color: #4081BC;
+  border: 2px solid #4081BC;
+  border-radius: 25px;
+  padding: 5px 20px 8px 20px;
+}
+
+/*# sourceMappingURL=app.css.map */
