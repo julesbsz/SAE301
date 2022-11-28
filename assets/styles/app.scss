@@ -155,12 +155,13 @@ header {
         text-align: center;
         line-height: 45px;
         border-radius: 50%;
-        background: #4081BC;
+        color: $main-color;
       }
 
       &:first-child {
         left: 0;
         background: linear-gradient(90deg, #fff 70%, transparent );
+        display: none;
 
         i {
           margin-left: 15px;
@@ -168,11 +169,12 @@ header {
       }
 
       &:last-child {
-        right: 0;
+        right: -10px;
         background: linear-gradient(-90deg, #fff 70%, transparent );
 
         i {
-          margin-right: 15px;
+          margin-right: 0;
+          transform: translateX(45px);
         }
       }
     }
@@ -181,6 +183,17 @@ header {
       display: flex;
       list-style: none;
       gap: 13px;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+
+      &.dragging {
+        scroll-behavior: auto;
+        cursor: grab;
+
+        .filter {
+          user-select: none;
+        }
+      }
 
       .filter {
         cursor: pointer;
@@ -190,6 +203,14 @@ header {
         border: 2px solid $main-color;
         border-radius: 25px;
         padding: 5px 20px 8px 20px;
+        transition: all 0.3s;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &.filter-active {
+          background-color: transparentize($main-color, 0.75);
+        }
       }
     }
   }

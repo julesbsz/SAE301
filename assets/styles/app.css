@@ -135,26 +135,37 @@ header img {
   text-align: center;
   line-height: 45px;
   border-radius: 50%;
-  background: #4081BC;
+  color: #4081BC;
 }
 .search .wrapper .icon:first-child {
   left: 0;
   background: linear-gradient(90deg, #fff 70%, transparent);
+  display: none;
 }
 .search .wrapper .icon:first-child i {
   margin-left: 15px;
 }
 .search .wrapper .icon:last-child {
-  right: 0;
+  right: -10px;
   background: linear-gradient(-90deg, #fff 70%, transparent);
 }
 .search .wrapper .icon:last-child i {
-  margin-right: 15px;
+  margin-right: 0;
+  transform: translateX(45px);
 }
 .search .wrapper .filters {
   display: flex;
   list-style: none;
   gap: 13px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.search .wrapper .filters.dragging {
+  scroll-behavior: auto;
+  cursor: grab;
+}
+.search .wrapper .filters.dragging .filter {
+  user-select: none;
 }
 .search .wrapper .filters .filter {
   cursor: pointer;
@@ -164,6 +175,10 @@ header img {
   border: 2px solid #4081BC;
   border-radius: 25px;
   padding: 5px 20px 8px 20px;
+  transition: all 0.3s;
+}
+.search .wrapper .filters .filter:hover, .search .wrapper .filters .filter:active, .search .wrapper .filters .filter:focus, .search .wrapper .filters .filter.filter-active {
+  background-color: rgba(64, 129, 188, 0.25);
 }
 
 /*# sourceMappingURL=app.css.map */
