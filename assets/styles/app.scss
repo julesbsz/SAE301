@@ -8,7 +8,13 @@
   src: url("./fonts/marianne/Marianne-Bold.woff") format('woff');
 }
 
+@font-face {
+  font-family: 'MarianneLight';
+  src: url("./fonts/marianne/Marianne-Light.woff") format('woff');
+}
+
 $main-color: #4081BC;
+$gray-color: #787878;
 
 * {
   padding: 0;
@@ -24,6 +30,7 @@ body {
 
 h1 {
   font-family: MarianneBold, sans-serif;
+  font-size: 50px;
 }
 
 .button {
@@ -72,6 +79,117 @@ nav {
       &:focus,
       &.link-active {
         color: $main-color;
+      }
+    }
+  }
+}
+
+header {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 7% 30px 7%;
+
+  span,
+  a {
+    color: $main-color;
+    text-decoration: none;
+    padding-left: 2px;
+  }
+
+  img {
+    height: 40px;
+    transform: translateY(5px);
+  }
+}
+
+.search {
+  padding: 0 7%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    position: relative;
+    font-family: MarianneLight;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid $gray-color;
+    font-size: 18px;
+    padding-left: 35px;
+    padding-bottom: 3px;
+    background: url("../images/search_default.svg") no-repeat left center;
+    outline: none;
+    transition: all 0.4s;
+
+    &:active,
+    &:focus {
+      background: url("../images/search_active.svg") no-repeat left center;
+      border-bottom: 2px solid $main-color;
+      color: $main-color;
+    }
+  }
+
+  .wrapper {
+    margin: 20px 0;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .icon {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 120px;
+      display: flex;
+      align-items: center;
+
+      & i {
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        font-size: 18px;
+        text-align: center;
+        line-height: 45px;
+        border-radius: 50%;
+        background: #4081BC;
+      }
+
+      &:first-child {
+        left: 0;
+        background: linear-gradient(90deg, #fff 70%, transparent );
+
+        i {
+          margin-left: 15px;
+        }
+      }
+
+      &:last-child {
+        right: 0;
+        background: linear-gradient(-90deg, #fff 70%, transparent );
+
+        i {
+          margin-right: 15px;
+        }
+      }
+    }
+
+    .filters {
+      display: flex;
+      list-style: none;
+      gap: 13px;
+
+      .filter {
+        cursor: pointer;
+        white-space: nowrap;
+        background-color: white;
+        color: $main-color;
+        border: 2px solid $main-color;
+        border-radius: 25px;
+        padding: 5px 20px 8px 20px;
       }
     }
   }

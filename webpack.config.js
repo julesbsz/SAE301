@@ -9,7 +9,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     // Importing Images
     .copyFiles({
-        from: './assets/images',
+        from: './assets/images/',
     })
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
