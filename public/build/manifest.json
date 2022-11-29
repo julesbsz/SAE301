@@ -39,5 +39,6 @@
   "build/password_default.svg": "/build/password_default.svg",
   "build/mail_default.svg": "/build/mail_default.svg",
   "build/password_active.svg": "/build/password_active.svg",
-  "build/mail_active.svg": "/build/mail_active.svg"
+  "build/mail_active.svg": "/build/mail_active.svg",
+  "build/erlon.jpg": "/build/erlon.jpg"
 }

@@ -29,6 +29,17 @@ body {
   font-family: MarianneRegular, sans-serif;
 }
 
+.links {
+  color: $main-color;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+
+  &:hover {
+    transform: translateX(3px);
+  }
+}
+
 h1 {
   font-family: MarianneBold, sans-serif;
   font-size: 50px;
@@ -66,7 +77,8 @@ p {
 }
 
 .alert {
-  color: lightcoral;
+  color: red;
+  margin-bottom: 20px;
 }
 
 nav {
@@ -326,8 +338,22 @@ header {
       display: flex;
       flex-direction: column;
 
+      &[name="registration_form"] ul {
+        list-style: none;
+        margin: 5px 0 15px 0;
+
+        li {
+          color: red;
+        }
+      }
+
       h1 {
         margin-bottom: 30px;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
       }
 
       label {
@@ -384,11 +410,11 @@ header {
       }
 
       .checkbox {
-        margin-top: -20px;
+        margin-top: -10px;
         margin-bottom: 30px;
         height: 30px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
 
         label {
           cursor: pointer;
@@ -415,5 +441,13 @@ header {
 
   a {
     align-self: flex-start;
+  }
+}
+
+.cgu {
+  padding: 20px 7%;
+
+  p {
+    margin: 15px 0 30px 0;
   }
 }

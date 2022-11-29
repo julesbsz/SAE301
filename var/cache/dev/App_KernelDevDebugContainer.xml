@@ -395,6 +395,13 @@
         <argument type="service" id=".service_locator.GymbEAg.App\Controller\Admin\UserCrudController"/>
       </call>
     </service>
+    <service id="App\Controller\CguController" class="App\Controller\CguController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\CguController"/>
+      </call>
+    </service>
     <service id="App\Controller\ContactController" class="App\Controller\ContactController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -1780,6 +1787,7 @@
             <argument>/Users/jules/Desktop/Cours/SAE301/www/vendor/symfony/form/Resources/translations/validators.en.xlf</argument>
             <argument>/Users/jules/Desktop/Cours/SAE301/www/vendor/symfony/security-core/Resources/translations/security.en.xlf</argument>
             <argument>/Users/jules/Desktop/Cours/SAE301/www/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.en.php</argument>
+            <argument>/Users/jules/Desktop/Cours/SAE301/www/translations/security.en.yaml</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>/Users/jules/Desktop/Cours/SAE301/www/vendor/symfony/validator/Resources/translations/validators.es.xlf</argument>
@@ -6586,6 +6594,9 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" abstract="true"/>
     <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CguController" class="App\Controller\CguController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CguController" class="App\Controller\CguController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CguController" class="App\Controller\CguController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7941,6 +7952,12 @@
         <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\CguController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CguController"/>
+      <argument>App\Controller\CguController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
     <service id=".service_locator.jIxfAsi.App\Controller\ContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ContactController"/>

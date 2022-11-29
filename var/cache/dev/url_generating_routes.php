@@ -17,6 +17,7 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\DashboardController::index'], [], [['text', '/admin']], [], [], []],
+    'app_cgu' => [[], ['_controller' => 'App\\Controller\\CguController::index'], [], [['text', '/conditions-generales-utilisation']], [], [], []],
     'app_contact' => [[], ['_controller' => 'App\\Controller\\ContactController::index'], [], [['text', '/contact']], [], [], []],
     'app_events' => [['id'], ['id' => 'tous', '_controller' => 'App\\Controller\\EventsController::index'], ['id' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*'], [['variable', '/', '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*', 'id', true], ['text', '/evenements']], [], [], []],
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
