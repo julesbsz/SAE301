@@ -51,10 +51,15 @@ p {
   border-radius: 5px;
   text-decoration: none;
   transition: all 0.4s;
+  cursor: pointer;
 }
 .button:hover {
   background-color: transparent;
   color: #4081BC;
+}
+
+.alert {
+  color: lightcoral;
 }
 
 nav {
@@ -258,7 +263,8 @@ header img {
 .login #login-left {
   width: 50vw;
   height: 100%;
-  background-color: lightblue;
+  background: url("../images/cathedrale.jpeg") no-repeat center;
+  background-size: cover;
 }
 .login #login-right {
   width: 50vw;
@@ -303,12 +309,35 @@ header img {
   border-bottom: 1px solid #4081BC;
   color: #4081BC;
 }
+.login #login-right form button {
+  width: 40%;
+  align-self: center;
+  font-family: MarianneBold;
+  font-size: 16px;
+}
+.login #login-right form p {
+  align-self: center;
+  padding-top: 10px;
+}
+.login #login-right form p a {
+  color: #4081BC;
+  font-family: Marianne;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.login #login-right form p a:hover {
+  transform: translateX(3px);
+}
 .login #login-right form .checkbox {
   margin-top: -20px;
   margin-bottom: 30px;
   height: 30px;
   display: flex;
   align-items: center;
+}
+.login #login-right form .checkbox label {
+  cursor: pointer;
 }
 
 #event {
