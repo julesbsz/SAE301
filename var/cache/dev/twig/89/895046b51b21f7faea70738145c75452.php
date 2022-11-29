@@ -131,19 +131,31 @@ class __TwigTemplate_7ad876435cb87dc4152046fab4541b9e extends Template
         echo "\" class=\"img-fluid\">
 
         <span>
-            ";
+            Lieux : ";
         // line 19
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 19, $this->source); })()), "genre", [], "any", false, false, false, 19), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["place"]) || array_key_exists("place", $context) ? $context["place"] : (function () { throw new RuntimeError('Variable "place" does not exist.', 19, $this->source); })()), "name", [], "any", false, false, false, 19), "html", null, true);
+        echo "<br>
+            Adresse : ";
+        // line 20
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["place"]) || array_key_exists("place", $context) ? $context["place"] : (function () { throw new RuntimeError('Variable "place" does not exist.', 20, $this->source); })()), "address", [], "any", false, false, false, 20), "html", null, true);
         echo "<br>
             ";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 20, $this->source); })()), "date", [], "any", false, false, false, 20), "html", null, true);
+        // line 21
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["place"]) || array_key_exists("place", $context) ? $context["place"] : (function () { throw new RuntimeError('Variable "place" does not exist.', 21, $this->source); })()), "capacity", [], "any", false, false, false, 21), "html", null, true);
+        echo " places disponibles<br>
+            ";
+        // line 22
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 22, $this->source); })()), "genre", [], "any", false, false, false, 22), "html", null, true);
+        echo "<br>
+            ";
+        // line 23
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 23, $this->source); })()), "date", [], "any", false, false, false, 23), "html", null, true);
         echo "
         </span>
 
         <p>";
-        // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 23, $this->source); })()), "description", [], "any", false, false, false, 23), "html", null, true);
+        // line 26
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["event"]) || array_key_exists("event", $context) ? $context["event"] : (function () { throw new RuntimeError('Variable "event" does not exist.', 26, $this->source); })()), "description", [], "any", false, false, false, 26), "html", null, true);
         echo "</p>
 
         <a href=\"#\" class=\"button\">Commander une place</a>
@@ -170,7 +182,7 @@ class __TwigTemplate_7ad876435cb87dc4152046fab4541b9e extends Template
 
     public function getDebugInfo()
     {
-        return array (  146 => 23,  140 => 20,  136 => 19,  128 => 16,  121 => 12,  115 => 11,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  158 => 26,  152 => 23,  148 => 22,  144 => 21,  140 => 20,  136 => 19,  128 => 16,  121 => 12,  115 => 11,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -193,6 +205,9 @@ class __TwigTemplate_7ad876435cb87dc4152046fab4541b9e extends Template
         <img src=\"{{ asset(\"build/\" ~ event.image) }}\" alt=\"{{ event.name }}\" class=\"img-fluid\">
 
         <span>
+            Lieux : {{ place.name }}<br>
+            Adresse : {{ place.address }}<br>
+            {{ place.capacity }} places disponibles<br>
             {{ event.genre }}<br>
             {{ event.date }}
         </span>

@@ -16,6 +16,9 @@
         <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
 
         <span>
+            Lieux : {{ place.name }}<br>
+            Adresse : {{ place.address }}<br>
+            {{ place.capacity }} places disponibles<br>
             {{ event.genre }}<br>
             {{ event.date }}
         </span>

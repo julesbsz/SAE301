@@ -31,8 +31,10 @@ class EventsController extends AbstractController
             if($event === null) {
                 throw $this->createNotFoundException('Aucun événement trouvé');
             } else {
+                $place = $event->getPlaces();
                 return $this->render('events/event.html.twig', [
                     'event' => $event,
+                    'place' => $place,
                 ]);
             }
         }
