@@ -17,6 +17,7 @@
 }
 
 body {
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   font-family: MarianneRegular, sans-serif;
@@ -27,12 +28,29 @@ h1 {
   font-size: 50px;
 }
 
+h2 {
+  font-family: MarianneBold, sans-serif;
+  font-size: 32px;
+}
+
+span {
+  color: #787878;
+  font-family: MarianneBold, sans-serif;
+}
+
+p {
+  font-family: MarianneLight;
+  color: #787878;
+}
+
 .button {
-  padding: 10px 20px;
+  padding: 10px 20px 14px 20px;
   color: white;
   background: #4081BC;
   border: 2px solid #4081BC;
   border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.4s;
 }
 .button:hover {
   background-color: transparent;
@@ -40,6 +58,8 @@ h1 {
 }
 
 nav {
+  position: fixed;
+  background-color: white;
   padding: 0 30px;
   width: 100vw;
   height: 90px;
@@ -67,6 +87,24 @@ nav ul li a {
 }
 nav ul li a:hover, nav ul li a:active, nav ul li a:focus, nav ul li a.link-active {
   color: #4081BC;
+}
+nav ul .account {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #4081BC;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+nav ul .account:hover {
+  background-color: rgba(64, 129, 188, 0.25);
+}
+nav ul .account i {
+  color: #4081BC;
+  font-size: 20px;
 }
 
 header {
@@ -179,6 +217,100 @@ header img {
 }
 .search .wrapper .filters .filter:hover, .search .wrapper .filters .filter:active, .search .wrapper .filters .filter:focus, .search .wrapper .filters .filter.filter-active {
   background-color: rgba(64, 129, 188, 0.25);
+}
+
+.events {
+  width: 100%;
+  padding: 40px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.events .event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.events .event img {
+  height: 400px;
+  width: 40%;
+  object-fit: contain;
+}
+.events .event div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.events .event div a {
+  align-self: flex-start;
+}
+.events .event div span {
+  margin-top: -10px;
+}
+
+.login {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+.login #login-left {
+  width: 50vw;
+  height: 100%;
+  background-color: lightblue;
+}
+.login #login-right {
+  width: 50vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login #login-right form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.login #login-right form h1 {
+  margin-bottom: 30px;
+}
+.login #login-right form label {
+  font-size: 18px;
+  color: #787878;
+  margin-bottom: 5px;
+}
+.login #login-right form input[type=email],
+.login #login-right form input[type=password] {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid #787878;
+  outline: none;
+  margin-bottom: 30px;
+  font-family: MarianneLight;
+  color: #787878;
+  font-size: 16px;
+}
+.login #login-right form input[type=email]::placeholder,
+.login #login-right form input[type=password]::placeholder {
+  font-style: italic;
+  color: #797979;
+}
+.login #login-right form input[type=email]:active, .login #login-right form input[type=email]:focus,
+.login #login-right form input[type=password]:active,
+.login #login-right form input[type=password]:focus {
+  border-bottom: 1px solid #4081BC;
+  color: #4081BC;
+}
+.login #login-right form .checkbox {
+  margin-top: -20px;
+  margin-bottom: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 /*# sourceMappingURL=app.css.map */

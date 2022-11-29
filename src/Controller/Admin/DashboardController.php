@@ -81,7 +81,7 @@ class DashboardController extends AbstractDashboardController
                 ->setAction('detail'),
 
             MenuItem::section('Autres'),
-            MenuItem::linkToLogout('Quitter', 'fas fa-right-from-bracket'),
+            MenuItem::linkToLogout('Se déconnecter', 'fas fa-right-from-bracket'),
 
         ];
     }
