@@ -146,7 +146,7 @@ class __TwigTemplate_d73b83b677c82b9ed6f037d1bd0f54af extends Template
 
 
                     <button class=\"btn btn-lg btn-primary\" type=\"submit\">
-                        Sign in
+                        S'identifier
                     </button>
                 ";
         }
@@ -220,7 +220,7 @@ class __TwigTemplate_d73b83b677c82b9ed6f037d1bd0f54af extends Template
 
 
                     <button class=\"btn btn-lg btn-primary\" type=\"submit\">
-                        Sign in
+                        S'identifier
                     </button>
                 {% endif %}
             </form>

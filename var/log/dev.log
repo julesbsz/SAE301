@@ -4368,3 +4368,8 @@
 [2022-11-29T07:48:23.028245+00:00] security.DEBUG: Checking support on authenticator. {"firewall_name":"main","authenticator":"App\\Security\\LoginAuthenticator"} []
 [2022-11-29T07:48:23.028452+00:00] security.DEBUG: Authenticator does not support the request. {"firewall_name":"main","authenticator":"App\\Security\\LoginAuthenticator"} []
 [2022-11-29T07:48:23.216697+00:00] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_route":"_wdt","_controller":"web_profiler.controller.profiler::toolbarAction","token":"8e0b69"},"request_uri":"http://127.0.0.1:8000/_wdt/8e0b69","method":"GET"} []
+[2022-11-29T07:51:33.483046+00:00] request.INFO: Matched route "app_login". {"route":"app_login","route_parameters":{"_route":"app_login","_controller":"App\\Controller\\SecurityController::login"},"request_uri":"http://127.0.0.1:8000/connexion","method":"GET"} []
+[2022-11-29T07:51:33.493920+00:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":1} []
+[2022-11-29T07:51:33.494027+00:00] security.DEBUG: Checking support on authenticator. {"firewall_name":"main","authenticator":"App\\Security\\LoginAuthenticator"} []
+[2022-11-29T07:51:33.494072+00:00] security.DEBUG: Authenticator does not support the request. {"firewall_name":"main","authenticator":"App\\Security\\LoginAuthenticator"} []
+[2022-11-29T07:51:33.912984+00:00] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_route":"_wdt","_controller":"web_profiler.controller.profiler::toolbarAction","token":"768723"},"request_uri":"http://127.0.0.1:8000/_wdt/768723","method":"GET"} []
