@@ -23,6 +23,7 @@ $gray-color: #787878;
 }
 
 body {
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   font-family: MarianneRegular, sans-serif;
@@ -33,12 +34,29 @@ h1 {
   font-size: 50px;
 }
 
+h2 {
+  font-family: MarianneBold, sans-serif;
+  font-size: 32px;
+}
+
+span {
+  color: $gray-color;
+  font-family: MarianneBold, sans-serif;
+}
+
+p {
+  font-family: MarianneLight;
+  color: $gray-color;
+}
+
 .button {
-  padding: 10px 20px;
+  padding: 10px 20px 14px 20px;
   color: white;
   background: $main-color;
   border: 2px solid $main-color;
   border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.4s;
 
   &:hover {
     background-color: transparent;
@@ -47,6 +65,8 @@ h1 {
 }
 
 nav {
+  position: fixed;
+  background-color: white;
   padding: 0 30px;
   width: 100vw;
   height: 90px;
@@ -79,6 +99,30 @@ nav {
       &:focus,
       &.link-active {
         color: $main-color;
+      }
+    }
+
+    .account{
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid $main-color;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        background-color: transparentize($main-color, 0.75);
+      }
+
+      &::before {
+      }
+
+      i {
+        color: $main-color;
+        font-size: 20px;
       }
     }
   }
@@ -155,12 +199,13 @@ header {
         text-align: center;
         line-height: 45px;
         border-radius: 50%;
-        background: #4081BC;
+        color: $main-color;
       }
 
       &:first-child {
         left: 0;
         background: linear-gradient(90deg, #fff 70%, transparent );
+        display: none;
 
         i {
           margin-left: 15px;
@@ -168,11 +213,12 @@ header {
       }
 
       &:last-child {
-        right: 0;
+        right: -10px;
         background: linear-gradient(-90deg, #fff 70%, transparent );
 
         i {
-          margin-right: 15px;
+          margin-right: 0;
+          transform: translateX(45px);
         }
       }
     }
@@ -181,6 +227,17 @@ header {
       display: flex;
       list-style: none;
       gap: 13px;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+
+      &.dragging {
+        scroll-behavior: auto;
+        cursor: grab;
+
+        .filter {
+          user-select: none;
+        }
+      }
 
       .filter {
         cursor: pointer;
@@ -190,6 +247,123 @@ header {
         border: 2px solid $main-color;
         border-radius: 25px;
         padding: 5px 20px 8px 20px;
+        transition: all 0.3s;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &.filter-active {
+          background-color: transparentize($main-color, 0.75);
+        }
+      }
+    }
+  }
+}
+
+.events {
+  width: 100%;
+  padding: 40px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  .event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    img {
+      height: 400px;
+      width: 40%;
+      object-fit: contain;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      a {
+        align-self: flex-start;
+      }
+      span {
+        margin-top: -10px;
+      }
+    }
+  }
+}
+
+.login {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  #login-left {
+    width: 50vw;
+    height: 100%;
+    background-color: lightblue;
+  }
+
+  #login-right {
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      label {
+        font-size: 18px;
+        color: $gray-color;
+        margin-bottom: 5px;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid $gray-color;
+        outline: none;
+        margin-bottom: 30px;
+        font-family: MarianneLight;
+        color: $gray-color;
+        font-size: 16px;
+
+        &::placeholder {
+          font-style: italic;
+          color: lighten($gray-color, 0.5);
+        }
+
+        &:active,
+        &:focus {
+          border-bottom: 1px solid $main-color;
+          color: $main-color;
+        }
+      }
+
+      .checkbox {
+        margin-top: -20px;
+        margin-bottom: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+      }
+
+      input:last-child {
+
       }
     }
   }
