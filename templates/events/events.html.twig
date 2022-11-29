@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Événements{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('events') }}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="/">Accueil</a> / Événements</span>
+        <h1>Nos Événements</h1>
+    </header>
+
+    <section class="search">
+        <input type="search" placeholder="Rechercher un événement, un genre ou une date...">
+{#        <div class="wrapper">#}
+{#            <div class="icon">#}
+{#                <i id="left" class="ri-arrow-left-s-line"></i>#}
+{#            </div>#}
+{#            <ul class="filters">#}
+{#                <li class="filter">Récent</li>#}
+{#                <li class="filter">Populaire</li>#}
+{#                <li class="filter">En plein air</li>#}
+{#                <li class="filter">En intérieur</li>#}
+{#                <li class="filter">Pour toute la famille</li>#}
+{#                <li class="filter">Enfants</li>#}
+{#                <li class="filter">Ados</li>#}
+{#                <li class="filter">Adultes</li>#}
+{#                <li class="filter">Concerts & Spectacles</li>#}
+{#                <li class="filter">Marchés</li>#}
+{#            </ul>#}
+{#            <div class="icon">#}
+{#                <i id="right" class="ri-arrow-right-s-line"></i>#}
+{#            </div>#}
+{#        </div>#}
+    </section>
+
+    <section class="events">
+        {% for event in events %}
+            <article class="event">
+                <img src="{{ asset("build/" ~ event.image) }}" alt={{ event.name }}>
+                <div>
+                    <h2>{{ event.name }}</h2>
+                    <span>{{ event.date }}<br>{{ event.genre }}</span>
+                    <p>{{ event.description }}</p>
+                    <a class="button" href="{{ path('app_events', {id: event.id}) }}">En savoir plus</a>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

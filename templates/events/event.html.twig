@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('events') }}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="/">Accueil</a> / <a href="{{ path('app_events') }}">Événements</a> / {{ event.name }}</span>
+        <h1>{{ event.name }}</h1>
+    </header>
+
+    <section id="event">
+        <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
+
+        <span>
+            {{ event.genre }}<br>
+            {{ event.date }}
+        </span>
+
+        <p>{{ event.description }}</p>
+
+        <a href="#" class="button">Commander une place</a>
+    </section>
+
+{% endblock %}

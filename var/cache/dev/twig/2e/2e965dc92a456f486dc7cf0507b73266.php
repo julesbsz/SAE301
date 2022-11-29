@@ -104,7 +104,7 @@ class __TwigTemplate_0094a39bea26718bdc89ccaea4fe3bdd extends Template
         echo "\">src/Controller/ContactController.php</a></code></li>
         <li>Your template at <code><a href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/Users/jules/Desktop/Cours/SAE301/www/templates/contact/index.html.twig", 0), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("/Users/jules/Desktop/Cours/SAE301/www/templates/contact/events.html.twig", 0), "html", null, true);
         echo "\">templates/contact/index.html.twig</a></code></li>
     </ul>
 </div>
@@ -150,7 +150,7 @@ class __TwigTemplate_0094a39bea26718bdc89ccaea4fe3bdd extends Template
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href=\"{{ '/Users/jules/Desktop/Cours/SAE301/www/src/Controller/ContactController.php'|file_link(0) }}\">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ '/Users/jules/Desktop/Cours/SAE301/www/templates/contact/index.html.twig'|file_link(0) }}\">templates/contact/index.html.twig</a></code></li>
+        <li>Your template at <code><a href=\"{{ '/Users/jules/Desktop/Cours/SAE301/www/templates/contact/events.html.twig'|file_link(0) }}\">templates/contact/index.html.twig</a></code></li>
     </ul>
 </div>
 {% endblock %}

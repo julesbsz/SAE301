@@ -17,6 +17,18 @@
     </ul>
 </nav>
 
+<script>
+    const nav = document.querySelector('nav');
+
+    addEventListener('scroll', () => {
+        if(window.scrollY <= 10) {
+            nav.style.boxShadow = 'none';
+        } else {
+            nav.style.boxShadow = '3px 3px 11.5px -5.5px #dddddd';
+        }
+    });
+</script>
+
 {#{% if is_granted('ROLE_ADMIN') %}#}
 {#    <li><a href="{{ path('admin') }}">Administration</a></li>#}
 {#{% endif %}#}

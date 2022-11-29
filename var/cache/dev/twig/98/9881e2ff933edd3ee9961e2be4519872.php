@@ -89,6 +89,18 @@ class __TwigTemplate_439b71f0f50ff8f09f7417002cfaa403 extends Template
         echo "    </ul>
 </nav>
 
+<script>
+    const nav = document.querySelector('nav');
+
+    addEventListener('scroll', () => {
+        if(window.scrollY <= 10) {
+            nav.style.boxShadow = 'none';
+        } else {
+            nav.style.boxShadow = '3px 3px 11.5px -5.5px #dddddd';
+        }
+    });
+</script>
+
 ";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -133,6 +145,18 @@ class __TwigTemplate_439b71f0f50ff8f09f7417002cfaa403 extends Template
         {% endif %}
     </ul>
 </nav>
+
+<script>
+    const nav = document.querySelector('nav');
+
+    addEventListener('scroll', () => {
+        if(window.scrollY <= 10) {
+            nav.style.boxShadow = 'none';
+        } else {
+            nav.style.boxShadow = '3px 3px 11.5px -5.5px #dddddd';
+        }
+    });
+</script>
 
 {#{% if is_granted('ROLE_ADMIN') %}#}
 {#    <li><a href=\"{{ path('admin') }}\">Administration</a></li>#}

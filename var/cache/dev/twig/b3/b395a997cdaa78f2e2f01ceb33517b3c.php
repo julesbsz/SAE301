@@ -121,48 +121,47 @@ class __TwigTemplate_c051e1744332e7cf3ea75316e7a67193 extends Template
         echo "    </section>
 
     <section class=\"events\">
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
-
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
-
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
-    </section>
+        ";
+        // line 40
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 40, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
+            // line 41
+            echo "            <article class=\"event\">
+                <img src=\"";
+            // line 42
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("build/" . twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 42))), "html", null, true);
+            echo "\" alt=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 42), "html", null, true);
+            echo ">
+                <div>
+                    <h2>";
+            // line 44
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 44), "html", null, true);
+            echo "</h2>
+                    <span>";
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 45), "html", null, true);
+            echo "<br>";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "genre", [], "any", false, false, false, 45), "html", null, true);
+            echo "</span>
+                    <p>";
+            // line 46
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 46), "html", null, true);
+            echo "</p>
+                    <a class=\"button\" href=\"";
+            // line 47
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_event", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+            echo "\">En savoir plus</a>
+                </div>
+            </article>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 51
+        echo "    </section>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -184,7 +183,7 @@ class __TwigTemplate_c051e1744332e7cf3ea75316e7a67193 extends Template
 
     public function getDebugInfo()
     {
-        return array (  121 => 37,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  164 => 51,  154 => 47,  150 => 46,  144 => 45,  140 => 44,  133 => 42,  130 => 41,  126 => 40,  121 => 37,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -228,47 +227,17 @@ class __TwigTemplate_c051e1744332e7cf3ea75316e7a67193 extends Template
     </section>
 
     <section class=\"events\">
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
-
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
-
-        <article class=\"event\">
-            <img src=\"https://ngproductions.fr/wp-content/uploads/2022/06/Template-Affiche-Siteweb-Damso.jpg\" alt=\"\">
-            <div>
-                <h2>Titre de l'événement</h2>
-                <span>Le 19 juin 2022 à 15h<br>Concert</span>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci, asperiores. Accusamus, ad
-                    alias aliquid asperiores atque autem beatae commodi consequatur cumque cupiditate delectus dolorum ea enim eos exercitationem explicabo.<br>
-                    facilis fuga fugiat hic id illum impedit incidunt inventore ipsa ipsam ipsum iste iure iusto laboriosam laborum laudantium libero magnam magni.
-                </p>
-                <a class=\"button\" href=\"#\">En savoir plus</a>
-            </div>
-        </article>
+        {% for event in events %}
+            <article class=\"event\">
+                <img src=\"{{ asset(\"build/\" ~ event.image) }}\" alt={{ event.name }}>
+                <div>
+                    <h2>{{ event.name }}</h2>
+                    <span>{{ event.date }}<br>{{ event.genre }}</span>
+                    <p>{{ event.description }}</p>
+                    <a class=\"button\" href=\"{{ path('app_event', {id: event.id}) }}\">En savoir plus</a>
+                </div>
+            </article>
+        {% endfor %}
     </section>
 {% endblock %}
 ", "events/index.html.twig", "/Users/jules/Desktop/Cours/SAE301/www/templates/events/index.html.twig");
