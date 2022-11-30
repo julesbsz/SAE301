@@ -118,27 +118,25 @@ nav {
       }
     }
 
-    .account{
+    .account a {
       height: 40px;
       width: 40px;
+      font-size: 22px;
+      color: $main-color;
+      cursor: pointer;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 3px solid $main-color;
+      border: 3px solid transparent;
       border-radius: 25px;
       cursor: pointer;
       transition: all 0.4s;
 
       &:hover {
-        background-color: transparentize($main-color, 0.75);
-      }
-
-      &::before {
-      }
-
-      i {
-        color: $main-color;
-        font-size: 20px;
+        //border: 3px solid $main-color;
+        //background-color: transparentize($main-color, 0.75);
+        transform: translateY(-3px);
       }
     }
   }

@@ -9,7 +9,13 @@
 
         {% if app.user %}
             <div class="account">
-                <i class="fa-solid fa-user"></i>
+                <a href="{{ path('app_cart') }}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </div>
+
+            <div class="account">
+                    <a href="{{ path('app_profile') }}"><i class="fa-solid fa-user"></i></a>
             </div>
         {% else %}
             <li><a class="button" href="{{ path('app_login') }}">S'identifier</a></li>

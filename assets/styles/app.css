@@ -102,23 +102,22 @@ nav ul li a {
 nav ul li a:hover, nav ul li a:active, nav ul li a:focus, nav ul li a.link-active {
   color: #4081BC;
 }
-nav ul .account {
+nav ul .account a {
   height: 40px;
   width: 40px;
+  font-size: 22px;
+  color: #4081BC;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #4081BC;
+  border: 3px solid transparent;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.4s;
 }
-nav ul .account:hover {
-  background-color: rgba(64, 129, 188, 0.25);
-}
-nav ul .account i {
-  color: #4081BC;
-  font-size: 20px;
+nav ul .account a:hover {
+  transform: translateY(-3px);
 }
 
 header {

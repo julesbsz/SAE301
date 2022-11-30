@@ -5,6 +5,7 @@
   "build/runtime.js": "/build/runtime.js",
   "build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_arra-02c072.js": "/build/vendors-node_modules_core-js_internals_array-iteration_js-node_modules_core-js_internals_arra-02c072.js",
   "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-2a3fb9.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-2a3fb9.js",
+  "build/erlon.jpg": "/build/erlon.jpg",
   "build/foire.png": "/build/foire.png",
   "build/dessiner.png": "/build/dessiner.png",
   "build/espace.png": "/build/espace.png",
@@ -39,6 +40,5 @@
   "build/password_default.svg": "/build/password_default.svg",
   "build/mail_default.svg": "/build/mail_default.svg",
   "build/password_active.svg": "/build/password_active.svg",
-  "build/mail_active.svg": "/build/mail_active.svg",
-  "build/erlon.jpg": "/build/erlon.jpg"
+  "build/mail_active.svg": "/build/mail_active.svg"
 }

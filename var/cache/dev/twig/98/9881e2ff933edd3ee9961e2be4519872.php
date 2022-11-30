@@ -75,17 +75,29 @@ class __TwigTemplate_439b71f0f50ff8f09f7417002cfaa403 extends Template
         if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10)) {
             // line 11
             echo "            <div class=\"account\">
-                <i class=\"fa-solid fa-user\"></i>
+                <a href=\"";
+            // line 12
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
+            echo "\">
+                    <i class=\"fa-solid fa-cart-shopping\"></i>
+                </a>
+            </div>
+
+            <div class=\"account\">
+                    <a href=\"";
+            // line 18
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
+            echo "\"><i class=\"fa-solid fa-user\"></i></a>
             </div>
         ";
         } else {
-            // line 15
+            // line 21
             echo "            <li><a class=\"button\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">S'identifier</a></li>
         ";
         }
-        // line 17
+        // line 23
         echo "    </ul>
 </nav>
 
@@ -122,7 +134,7 @@ class __TwigTemplate_439b71f0f50ff8f09f7417002cfaa403 extends Template
 
     public function getDebugInfo()
     {
-        return array (  89 => 17,  83 => 15,  77 => 11,  75 => 10,  68 => 8,  64 => 7,  58 => 6,  52 => 5,  46 => 2,  43 => 1,);
+        return array (  101 => 23,  95 => 21,  89 => 18,  80 => 12,  77 => 11,  75 => 10,  68 => 8,  64 => 7,  58 => 6,  52 => 5,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -138,7 +150,13 @@ class __TwigTemplate_439b71f0f50ff8f09f7417002cfaa403 extends Template
 
         {% if app.user %}
             <div class=\"account\">
-                <i class=\"fa-solid fa-user\"></i>
+                <a href=\"{{ path('app_cart') }}\">
+                    <i class=\"fa-solid fa-cart-shopping\"></i>
+                </a>
+            </div>
+
+            <div class=\"account\">
+                    <a href=\"{{ path('app_profile') }}\"><i class=\"fa-solid fa-user\"></i></a>
             </div>
         {% else %}
             <li><a class=\"button\" href=\"{{ path('app_login') }}\">S'identifier</a></li>

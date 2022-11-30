@@ -116,42 +116,40 @@ class __TwigTemplate_5a909b39845348836b99febb926ea429 extends Template
 
     <section class=\"search\">
         <input type=\"search\" placeholder=\"Rechercher un événement, un genre ou une date...\">
-";
-        // line 37
-        echo "    </section>
+    </section>
 
     <section class=\"events\">
         ";
-        // line 40
+        // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 40, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["events"]) || array_key_exists("events", $context) ? $context["events"] : (function () { throw new RuntimeError('Variable "events" does not exist.', 20, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-            // line 41
+            // line 21
             echo "            <article class=\"event\">
                 <img src=\"";
-            // line 42
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("build/" . twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 42))), "html", null, true);
+            // line 22
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("build/" . twig_get_attribute($this->env, $this->source, $context["event"], "image", [], "any", false, false, false, 22))), "html", null, true);
             echo "\" alt=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 42), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 22), "html", null, true);
             echo ">
                 <div>
                     <h2>";
-            // line 44
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 44), "html", null, true);
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "name", [], "any", false, false, false, 24), "html", null, true);
             echo "</h2>
                     <span>";
-            // line 45
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 45), "html", null, true);
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "date", [], "any", false, false, false, 25), "html", null, true);
             echo "<br>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "genre", [], "any", false, false, false, 45), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "genre", [], "any", false, false, false, 25), "html", null, true);
             echo "</span>
                     <p>";
-            // line 46
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 46), "html", null, true);
+            // line 26
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["event"], "description", [], "any", false, false, false, 26), "html", null, true);
             echo "</p>
                     <a class=\"button\" href=\"";
-            // line 47
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_events", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 47)]), "html", null, true);
+            // line 27
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_events", ["id" => twig_get_attribute($this->env, $this->source, $context["event"], "id", [], "any", false, false, false, 27)]), "html", null, true);
             echo "\">En savoir plus</a>
                 </div>
             </article>
@@ -160,7 +158,7 @@ class __TwigTemplate_5a909b39845348836b99febb926ea429 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 51
+        // line 31
         echo "    </section>
 ";
         
@@ -183,7 +181,7 @@ class __TwigTemplate_5a909b39845348836b99febb926ea429 extends Template
 
     public function getDebugInfo()
     {
-        return array (  164 => 51,  154 => 47,  150 => 46,  144 => 45,  140 => 44,  133 => 42,  130 => 41,  126 => 40,  121 => 37,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
+        return array (  162 => 31,  152 => 27,  148 => 26,  142 => 25,  138 => 24,  131 => 22,  128 => 21,  124 => 20,  112 => 10,  102 => 9,  89 => 6,  79 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -204,26 +202,6 @@ class __TwigTemplate_5a909b39845348836b99febb926ea429 extends Template
 
     <section class=\"search\">
         <input type=\"search\" placeholder=\"Rechercher un événement, un genre ou une date...\">
-{#        <div class=\"wrapper\">#}
-{#            <div class=\"icon\">#}
-{#                <i id=\"left\" class=\"ri-arrow-left-s-line\"></i>#}
-{#            </div>#}
-{#            <ul class=\"filters\">#}
-{#                <li class=\"filter\">Récent</li>#}
-{#                <li class=\"filter\">Populaire</li>#}
-{#                <li class=\"filter\">En plein air</li>#}
-{#                <li class=\"filter\">En intérieur</li>#}
-{#                <li class=\"filter\">Pour toute la famille</li>#}
-{#                <li class=\"filter\">Enfants</li>#}
-{#                <li class=\"filter\">Ados</li>#}
-{#                <li class=\"filter\">Adultes</li>#}
-{#                <li class=\"filter\">Concerts & Spectacles</li>#}
-{#                <li class=\"filter\">Marchés</li>#}
-{#            </ul>#}
-{#            <div class=\"icon\">#}
-{#                <i id=\"right\" class=\"ri-arrow-right-s-line\"></i>#}
-{#            </div>#}
-{#        </div>#}
     </section>
 
     <section class=\"events\">
