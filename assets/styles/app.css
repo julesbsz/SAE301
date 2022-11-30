@@ -246,16 +246,19 @@ header img {
   align-items: center;
   justify-content: center;
   gap: 50px;
+  width: 100vw;
 }
 .events .event img {
   height: 400px;
   width: 40%;
   object-fit: contain;
+  width: 40vw;
 }
 .events .event div {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 50vw;
 }
 .events .event div a {
   align-self: flex-start;
