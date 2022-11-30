@@ -288,17 +288,20 @@ header {
     align-items: center;
     justify-content: center;
     gap: 50px;
+    width: 100vw;
 
     img {
       height: 400px;
       width: 40%;
       object-fit: contain;
+      width: 40vw;
     }
 
     div {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 50vw;
 
       a {
         align-self: flex-start;
