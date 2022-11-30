@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    #[Route('/cart', name: 'app_cart')]
+    #[Route('/panier', name: 'app_cart')]
     public function index(): Response
     {
         return $this->render('cart/index.html.twig', []);

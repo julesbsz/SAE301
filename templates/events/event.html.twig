@@ -2,10 +2,6 @@
 
 {% block title %}{{ event.name }}{% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('events') }}
-{% endblock %}
-
 {% block body %}
     <header>
         <span><a href="/">Accueil</a> / <a href="{{ path('app_events') }}">Événements</a> / {{ event.name }}</span>
@@ -15,25 +11,99 @@
     <section id="event">
         <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
 
-        <span>
-            Lieux : {{ place.name }}<br>
-            Adresse : {{ place.address }}<br>
-            {{ place.capacity }} places disponibles<br>
-            {{ event.genre }}<br>
-            {{ event.date }}
-        </span>
+        <p>
+            Lieux : <span>{{ place.name }}</span><br>
+            Adresse : <span>{{ place.address }}</span><br>
+            Places disponibles: <span>{{ place.capacity }}</span><br>
+            Genre: <span>{{ event.genre }}</span><br>
+            Date: <span>{{ event.date }}</span>
+        </p>
 
         <p>{{ event.description }}</p>
 
+        {% if event.price == 0 %}
+            <span id="price">Gratuit</span>
+        {% else %}
+            <span id="price">{{ event.price }} €</span>
+        {% endif %}
 
+        <div class="card-action">
+            <a id="order" class="button">Ajouter au panier</a>
+            <div>
+                <i id="add" class="fa-solid fa-plus"></i>
+                <p id="quantity">1 place</p>
+                <i id="del" class="fa-solid fa-minus"></i>
+            </div>
+        </div>
     </section>
 
-    <section id="reserver"> 
-            <a href="#" class="button">Commander une place</a>
-        <span id="article">{{event.name}}</span>  <span id="prix"> {% if event.price == 0 %} Gratuit {% elseif event.price > 0.001   %} {{event.price}}€   {% endif %} 
-    x <input type="number" value="1" min="1" max="99" id="qte">
-    <button id="ajout">ajouter au panier</button></span>
+    <script defer>
+        let cookies = recupCookie("cart");
 
-    </section>
+        if(cookies != null) {
+            cookies = JSON.parse(cookies);
+        } else {
+            cookies = [];
+        }
 
+        let cart = 0;
+        cookies.forEach(function(event) {
+            cart += event.quantity;
+        });
+
+        function recupCookie(cart){
+            if (document.cookie.length == 0) {
+                return null;
+            }
+
+            let cookies = document.cookie.split("; ");
+            cookies.forEach(element => {
+                let item = element.split("=");
+                if(item[0] === cart) {
+                    output = item[1]
+                } else {
+                    output = null;
+                }
+            })
+            return output;
+        }
+
+        const add = document.getElementById('add');
+        const del = document.getElementById('del');
+        const quantity = document.getElementById('quantity');
+        const order = document.getElementById('order');
+
+        add.addEventListener('click', () => {
+            quantity.textContent = parseInt(quantity.textContent) + 1 + ' places';
+
+        });
+
+        del.addEventListener('click', () => {
+            if ((parseInt(quantity.textContent) > 1) && (parseInt(quantity.textContent) > 2)) {
+                quantity.textContent = parseInt(quantity.textContent) - 1 + ' places';
+                return;
+            }
+
+            if (parseInt(quantity.textContent) == 2) {
+                quantity.textContent = parseInt(quantity.textContent) - 1 + ' place';
+            }
+        });
+
+        order.addEventListener('click', () => {
+            const id = {{ event.id }};
+            const quantity = parseInt(document.getElementById('quantity').textContent);
+            const price = {{ event.price }};
+
+            let index = cookies.findIndex(element => element.id == id);
+            if (index > -1) {
+                cookies[index].quantity = parseInt(cookies[index].quantity) + parseInt(document.getElementById('quantity').value);
+            } else {
+                cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}' });
+            }
+
+            cart += quantity;
+
+            document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+        });
+    </script>
 {% endblock %}

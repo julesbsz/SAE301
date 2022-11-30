@@ -373,7 +373,8 @@ header img {
 }
 #event img {
   width: 100%;
-  height: 400px;
+  min-height: 400px;
+  max-height: 600px;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
@@ -381,12 +382,102 @@ header img {
 #event a {
   align-self: flex-start;
 }
-
-.cgu {
-  padding: 20px 7%;
+#event span#price {
+  font-size: 20px;
+  margin-bottom: -20px;
 }
-.cgu p {
-  margin: 15px 0 30px 0;
+#event .card-action {
+  display: flex;
+  gap: 20px;
+}
+#event .card-action div {
+  display: flex;
+  gap: 15px;
+  height: max-content;
+  align-items: center;
+  justify-content: center;
+}
+#event .card-action div i {
+  color: #4081BC;
+  font-size: 25px;
+  padding: 13px 0 13px 0;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#event .card-action div i:nth-child(1):hover {
+  transform: rotate(90deg);
+}
+#event .card-action div i:nth-child(3):hover {
+  transform: rotate(180deg);
+}
+#event .card-action div p {
+  font-family: MarianneBold;
+}
+
+.cart {
+  padding: 40px 7%;
+  width: 100%;
+  display: flex;
+}
+.cart .cart-content {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.cart .cart-content article {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 25px;
+}
+.cart .cart-content article img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.cart .cart-content article div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+}
+.cart .cart-content article div a {
+  align-self: flex-start;
+}
+.cart .cart-content article div span {
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+.cart .cart-content article div .price {
+  color: #4081BC;
+  font-family: MarianneBold;
+}
+.cart .cart-content article div .action {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+.cart .cart-content article div .action i {
+  font-size: 20px;
+  color: #4081BC;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.cart .cart-content article div .action i:first-child:hover {
+  transform: rotate(90deg);
+}
+.cart .cart-content article div .action i:nth-child(3):hover {
+  transform: rotate(180deg);
+}
+.cart .cart-content hr {
+  width: 70%;
+  border: 0.5px solid #787878;
+}
+.cart .cart-checkout {
+  background-color: green;
+  width: 35%;
 }
 
 /*# sourceMappingURL=app.css.map */

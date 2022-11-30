@@ -2,10 +2,6 @@
 
 {% block title %}Événements{% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('events') }}
-{% endblock %}
-
 {% block body %}
     <header>
         <span><a href="/">Accueil</a> / Événements</span>
@@ -13,8 +9,7 @@
     </header>
 
     <section class="search">
-{#        <input type="search" placeholder="Rechercher un événement, un genre ou une date...">#}
-        {{ form(form) }}
+        <input type="search" placeholder="Rechercher un événement, un genre ou une date...">
     </section>
 
     <section class="events">
