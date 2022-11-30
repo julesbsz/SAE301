@@ -25,7 +25,15 @@
 
         <p>{{ event.description }}</p>
 
-        <a href="#" class="button">Commander une place</a>
+
+    </section>
+
+    <section id="reserver"> 
+            <a href="#" class="button">Commander une place</a>
+        <span id="article">{{event.name}}</span>  <span id="prix"> {% if event.price == 0 %} Gratuit {% elseif event.price > 0.001   %} {{event.price}}€   {% endif %} 
+    x <input type="number" value="1" min="1" max="99" id="qte">
+    <button id="ajout">ajouter au panier</button></span>
+
     </section>
 
 {% endblock %}
