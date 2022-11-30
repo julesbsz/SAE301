@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
     <header>
@@ -41,7 +41,7 @@
 
             let cookies = document.cookie.split("; ");
             cookies.forEach(element => {
-                item = element.split("=");
+                let item = element.split("=");
                 if(item[0] === cart) {
                     output = item[1]
                 } else {
@@ -57,8 +57,15 @@
             } else {
                 item.price = item.price + "€";
             }
-            html = `
-                <article class="event">
+
+            if(item.quantity == 1) {
+                item.quantity = item.quantity + " place";
+            } else {
+                item.quantity = item.quantity + " places";
+            }
+
+            let html = `
+                <article class="event" id="${item.id}">
                     <img src='build/${item.picture}' alt=${item.name}>
                     <div>
                         <h2>${item.name}</h2>
@@ -67,14 +74,37 @@
                         <p class="price">${item.price}</p>
                         <div class="action">
                             <i id="add" class="fa-solid fa-plus"></i>
-                            <p id="quantity">1 place</p>
+                            <p id="quantity">${item.quantity}</p>
                             <i id="del" class="fa-solid fa-minus"></i>
                         </div>
                     </div>
+
+                    <i id="del" class="fa-solid fa-trash-can del"></i>
                 </article>
-                <hr>
+<!--                <hr>-->
             `;
             document.querySelector(".cart-content").innerHTML += html;
         })
+
+        const del = document.querySelectorAll(".del");
+        del.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.parentElement.id;
+                console.log(id);
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        cookies.splice(index, 1);
+                        console.log(cookies);
+
+                        element.parentElement.remove();
+                        cart -= element.quantity;
+                        document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                    }
+                });
+            })
+        })
+
+        // const add = document.querySelectorAll('.add');
+        // const supp = document.querySelectorAll('supp');
     </script>
 {% endblock %}

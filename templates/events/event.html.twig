@@ -96,13 +96,12 @@
 
             let index = cookies.findIndex(element => element.id == id);
             if (index > -1) {
-                cookies[index].quantity = parseInt(cookies[index].quantity) + parseInt(document.getElementById('quantity').value);
+                cookies[index].quantity += quantity;
             } else {
                 cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}' });
             }
 
             cart += quantity;
-
             document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
         });
     </script>
