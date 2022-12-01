@@ -5,39 +5,88 @@
 {% block body %}
     <header>
         <span><a href="/">Accueil</a> / <a href="{{ path('app_events') }}">Événements</a> / {{ event.name }}</span>
-        <h1>{{ event.name }}</h1>
+        <h1 id="event-name">{{ event.name }}</h1>
     </header>
 
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <section class="modal__header">
+                    <h2 class="modal__title" id="modal-1-title">
+                        3 places ont été ajoutées au panier
+                    </h2>
+                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </section>
+
+                <main class="modal__content" id="modal-1-content">
+                    <p id="modal-text">
+                        3 places pour le marché de Noël ont été ajoutées au panier.
+                    </p>
+                </main>
+
+                <footer class="modal__footer">
+                    <a href="{{ path('app_cart') }}" class="modal__btn modal__btn-primary">Aller au panier</a>
+                    <a class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Continuer mes achats</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+
     <section id="event">
-        <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
+        <div>
+            <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
 
-        <p>
-            Lieux : <span>{{ place.name }}</span><br>
-            Adresse : <span>{{ place.address }}</span><br>
-            Places disponibles: <span>{{ place.capacity }}</span><br>
-            Genre: <span>{{ event.genre }}</span><br>
-            Date: <span>{{ event.date }}</span>
-        </p>
+            <div>
+                <p>
+                    Date: <span>{{ event.date }}</span><br>
+                    Genre: <span>{{ event.genre }}</span><br><br>
 
-        <p>{{ event.description }}</p>
+                    Lieux : <span>{{ place.name }}</span><br>
+                    Adresse : <span>{{ place.address }}</span><br><br>
 
-        {% if event.price == 0 %}
-            <span id="price">Gratuit</span>
-        {% else %}
-            <span id="price">{{ event.price }} €</span>
-        {% endif %}
+                    Places disponibles: <span>{{ place.capacity }}</span><br>
+                </p>
+
+                <p>{{ event.description }}</p>
+
+                {% if event.price == 0 %}
+                    <span id="price">Prix : Gratuit</span>
+                {% else %}
+                    <span id="price">Prix : {{ event.price }} €</span>
+                {% endif %}
+            </div>
+        </div>
 
         <div class="card-action">
             <a id="order" class="button">Ajouter au panier</a>
             <div>
                 <i id="add" class="fa-solid fa-plus"></i>
-                <p id="quantity">1 place</p>
+                <p id="quantity">1</p>
                 <i id="del" class="fa-solid fa-minus"></i>
             </div>
         </div>
+
+        <a class="links" style="margin-top: -15px" href="{{ path('app_events', {'id': 'tous'}) }}">Retour aux événements</a>
     </section>
 
+    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script defer>
+        MicroModal.init({
+            onShow: modal => console.info(`${modal.id} is shown`), // [1]
+            onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+            openTrigger: 'data-custom-open', // [3]
+            closeTrigger: 'data-custom-close', // [4]
+            disableScroll: true, // [5]
+            disableFocus: false, // [6]
+            awaitCloseAnimation: false, // [7]
+            debugMode: true // [8]
+        });
+
+        var button = document.querySelector('.button');
+        button.addEventListener('click', function(){
+            MicroModal.show('modal-1');
+        });
+
         let cookies = recupCookie("cart");
 
         if(cookies != null) {
@@ -70,22 +119,21 @@
 
         const add = document.getElementById('add');
         const del = document.getElementById('del');
-        const quantity = document.getElementById('quantity');
+        let quantity = document.getElementById('quantity');
         const order = document.getElementById('order');
 
         add.addEventListener('click', () => {
-            quantity.textContent = parseInt(quantity.textContent) + 1 + ' places';
-
+            quantity.textContent = parseInt(quantity.textContent) + 1;
         });
 
         del.addEventListener('click', () => {
             if ((parseInt(quantity.textContent) > 1) && (parseInt(quantity.textContent) > 2)) {
-                quantity.textContent = parseInt(quantity.textContent) - 1 + ' places';
+                quantity.textContent = parseInt(quantity.textContent) - 1;
                 return;
             }
 
             if (parseInt(quantity.textContent) == 2) {
-                quantity.textContent = parseInt(quantity.textContent) - 1 + ' place';
+                quantity.textContent = parseInt(quantity.textContent) - 1;
             }
         });
 
@@ -98,11 +146,21 @@
             if (index > -1) {
                 cookies[index].quantity += quantity;
             } else {
-                cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}' });
+                let description = '{{ event.description }}';
+                let descriptionShort = description.substring(0, 100) + '...';
+                cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}', 'description': descriptionShort });
             }
 
             cart += quantity;
             document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+
+            if(quantity > 1) {
+                document.getElementById('modal-text').textContent = quantity + " places pour " + document.getElementById('event-name').textContent +"  ont été ajoutées au panier.";
+                document.getElementById('modal-1-title').textContent = quantity + " places ont été ajoutées au panier";
+            } else {
+                document.getElementById('modal-text').textContent = quantity + " place pour " + document.getElementById('event-name').textContent +"  a été ajoutée au panier.";
+                document.getElementById('modal-1-title').textContent = quantity + " place a été ajoutée au panier";
+            }
         });
     </script>
 {% endblock %}

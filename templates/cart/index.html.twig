@@ -9,13 +9,13 @@
     </header>
 
     <section class="cart">
-        <div class="cart-content">
-
+        <div class="cart-empty">
+            <img src="{{ asset('build/empty-cart.png') }}" alt="Panier vide">
+            <span>Votre panier est vide :/</span>
+            <a href="{{ path('app_events', {'id': 'tous'}) }}" class="button">Explorer les événements</a>
         </div>
-
-        <div class="cart-checkout">
-
-        </div>
+        <div class="cart-content"></div>
+        <div class="cart-checkout"></div>
     </section>
 
     <script defer>
@@ -26,8 +26,6 @@
         } else {
             cookies = [];
         }
-
-        console.log(cookies);
 
         let cart = 0;
         cookies.forEach(function(event) {
@@ -51,60 +49,134 @@
             return output;
         }
 
+        setCheckout();
+
         cookies.forEach(item => {
             if(item.price == 0) {
-                item.price = "Gratuit";
+                price = "Gratuit";
             } else {
-                item.price = item.price + "€";
+                price = item.price + "€";
             }
 
-            if(item.quantity == 1) {
-                item.quantity = item.quantity + " place";
-            } else {
-                item.quantity = item.quantity + " places";
-            }
-
-            let html = `
+            let cart_html = `
                 <article class="event" id="${item.id}">
                     <img src='build/${item.picture}' alt=${item.name}>
                     <div>
                         <h2>${item.name}</h2>
-                        <span>${item.date}</span>
-                        <span>${item.place}</span>
-                        <p class="price">${item.price}</p>
-                        <div class="action">
-                            <i id="add" class="fa-solid fa-plus"></i>
-                            <p id="quantity">${item.quantity}</p>
-                            <i id="del" class="fa-solid fa-minus"></i>
-                        </div>
-                    </div>
+                        <p>${item.description}</p>
+                        <p class="price">Prix : ${price}</p>
 
-                    <i id="del" class="fa-solid fa-trash-can del"></i>
+                        <div>
+                            <div class="action">
+                                <i id="add" class="fa-solid fa-plus add-act"></i>
+                                <span id="quantity">${item.quantity}</span>
+                                <i id="del" class="fa-solid fa-minus supp-act"></i>
+                            </div>
+                            <i id="${item.id}" class="fa-solid fa-trash-can del"></i>
+                        </div>
+
+                    </div>
                 </article>
-<!--                <hr>-->
+<!--                <hr>--
             `;
-            document.querySelector(".cart-content").innerHTML += html;
+            document.querySelector(".cart-content").innerHTML += cart_html;
         })
 
         const del = document.querySelectorAll(".del");
         del.forEach(element => {
             element.addEventListener("click", function () {
-                let id = element.parentElement.id;
-                console.log(id);
+                let id = element.id;
                 cookies.forEach(function(event, index) {
                     if(event.id == id) {
                         cookies.splice(index, 1);
-                        console.log(cookies);
 
-                        element.parentElement.remove();
+                        element.parentElement.parentElement.parentElement.remove();
                         cart -= element.quantity;
                         document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
                     }
                 });
+                setCheckout();
             })
         })
 
-        // const add = document.querySelectorAll('.add');
-        // const supp = document.querySelectorAll('supp');
+        const add = document.querySelectorAll(".add-act");
+        const supp = document.querySelectorAll(".supp-act");
+
+        add.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.parentElement.parentElement.parentElement.parentElement.id;
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        event.quantity++;
+                        element.parentElement.children[1].innerHTML = event.quantity;
+                        cart += 1;
+                        document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                    }
+                });
+                setCheckout();
+            });
+        })
+
+        supp.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.parentElement.parentElement.parentElement.parentElement.id;
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        if(event.quantity > 1) {
+                            event.quantity--;
+                            if(event.quantity == 1) {
+                                element.parentElement.children[1].innerHTML = event.quantity;
+                            } else {
+                                element.parentElement.children[1].innerHTML = event.quantity;
+                            }
+                            cart -= 1;
+                            document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                        }
+                    }
+                });
+                setCheckout();
+            })
+        })
+
+        function setCheckout() {
+            let total = 0;
+            let totalTTC = 0;
+            let totalTVA = 0;
+            let items = 0;
+            cookies.forEach(function (event) {
+                total += Math.round(event.price * event.quantity);
+                totalTTC += Math.round(event.price * event.quantity * 1.2);
+                totalTVA += Math.round(event.price * event.quantity * 0.2);
+                items += event.quantity;
+            });
+
+            if (items == 0) {
+                document.querySelector('.cart-checkout').style.display = "none";
+                document.querySelector('.cart-content').style.display = "none";
+                document.querySelector('.cart-empty').style.display = "flex";
+            } else {
+                document.querySelector('.cart-checkout').style.display = "flex";
+                document.querySelector('.cart-content').style.display = "flex";
+                document.querySelector('.cart-empty').style.display = "none";
+
+                let checkout_html = `
+                        <div>
+                            <h2>Total</h2>
+                            <h2>${totalTTC} €</h2>
+                        </div>
+                        <hr>
+                        <div>
+                            <p>${items} places</p>
+                            <p>${total} €</p>
+                        </div>
+                        <div style="margin-top: -20px">
+                            <p>TVA</p>
+                            <p>${totalTVA} €</p>
+                        </div>
+                        <a class="button" href="#">Payer ${totalTTC} €</a>
+                    `;
+                document.querySelector(".cart-checkout").innerHTML = checkout_html;
+            }
+        }
     </script>
 {% endblock %}

@@ -10,3 +10,15 @@
 // cookies.forEach(function(event) {
 //     cart += cookies.event;
 // });
+
+const cart = document.getElementById('cart-button');
+
+if(window.location.pathname === "/panier") {
+    cart.style.display = "none";
+} else {
+    cart.style.display = "flex";
+}
+
+cart.addEventListener('click', function() {
+    document.location.href = '/panier';
+});
