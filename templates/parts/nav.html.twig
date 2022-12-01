@@ -6,6 +6,7 @@
         <li><a href="{{ path('app_events') }}" class="{{ app.request.get('_route') == 'app_events' ? 'link-active' }}">Événements</a></li>
         <li><a href="{{ path('app_home') }}">À propos</a></li>
         <li><a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') == 'app_contact' ? 'link-active' }}">Contact</a></li>
+        <li><a href="{{ path('app_lieux') }}" class="{{ app.request.get('_route') == 'app_lieux' ? 'link-active' }}">Lieux</a></li>
 
         {% if app.user %}
             <div class="account">
