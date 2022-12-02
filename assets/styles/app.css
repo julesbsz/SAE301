@@ -402,11 +402,30 @@ header img {
 #contact {
   width: 100vw;
 }
-#contact #infos-utile {
+#contact #block {
+  display: flex;
+  justify-content: center;
+}
+#contact #block #content-block {
   display: flex;
   flex-direction: column;
   background-color: #4081BC;
+  height: 50vh;
+  width: 60vw;
+  margin-bottom: 5vh;
+}
+#contact #block #content-block h2 {
   color: white;
+  font-family: MarianneBold;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+}
+#contact #block #content-block p {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+  padding: 2px 30px 2px 30px;
 }
 #contact footer {
   width: 100vw;
@@ -446,11 +465,25 @@ header img {
   background: #4081BC;
   margin-right: 1rem;
 }
+#contact footer #infos .title_footer {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+#contact footer #infos a {
+  text-decoration: none;
+  color: #787878;
+}
 #contact footer #map {
   display: flex;
   flex-direction: column;
   width: 33%;
   align-items: center;
+}
+#contact footer #map .title_footer {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
 }
 #contact footer #map .title_footer::before {
   content: "";
@@ -463,6 +496,10 @@ header img {
 #contact footer #map img {
   margin-top: 50px;
   width: 150px;
+}
+#contact footer #map img:hover {
+  transform: scale(1.1);
+  transition: all 0.7s;
 }
 
 #event {

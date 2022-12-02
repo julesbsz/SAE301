@@ -452,13 +452,34 @@ header {
 #contact {
   width: 100vw;
 
-
-#infos-utile {
+#block {
   display: flex;
-  flex-direction: column;
-  background-color: $main-color;
-  color: white;
+  justify-content: center;
+
+  #content-block {
+    display: flex;
+    flex-direction: column;
+    background-color: $main-color;
+    height: 50vh;
+    width: 60vw;
+    margin-bottom: 5vh;
+  
+    h2 {
+      color: white;
+      font-family: MarianneBold;
+      font-size: 30px;
+      text-align: center;
+      padding: 20px 0px 20px 0px;
+    }
+    p{
+      color: white;
+      font-size: 18px;
+      margin: 0;
+      padding: 2px 30px 2px 30px;
+    }
+  }
 }
+
 
   footer {
     width: 100vw;
@@ -495,6 +516,7 @@ header {
     }
 
     #infos {
+
       width: 33%;
       align-items: center;
       display: flex;
@@ -508,8 +530,17 @@ header {
         background: $main-color;
         margin-right: 1rem;
     }
-      
 
+    .title_footer {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #787878;
+    }
     }
 
     #map {
@@ -517,6 +548,14 @@ header {
       flex-direction: column;
       width: 33%;
       align-items: center;
+
+      .title_footer {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+    }
+
+
 
 
   .title_footer::before {
@@ -530,6 +569,12 @@ header {
       img {
         margin-top: 50px;
         width: 150px
+
+      }
+
+      img:hover {
+        transform: scale(1.1);
+        transition: all 0.7s;
       }
 
     }
