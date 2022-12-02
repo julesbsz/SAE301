@@ -11,7 +11,7 @@ class LieuxController extends AbstractController
     #[Route('/lieux', name: 'app_lieux')]
     public function index(): Response
     {
-        return $this->render('lieux/index.html.twig', [
+        return $this->render('lieux/lieux.html.twig', [
             'controller_name' => 'LieuxController',
         ]);
     }

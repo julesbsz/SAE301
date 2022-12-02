@@ -449,6 +449,96 @@ header {
   }
 }
 
+#contact {
+  width: 100vw;
+
+
+#infos-utile {
+  display: flex;
+  flex-direction: column;
+  background-color: $main-color;
+  color: white;
+}
+
+  footer {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+
+    
+
+    #réseaux {
+
+      width: 33%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+
+      img {
+        width: 300px;
+
+      }
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        
+
+        img {
+          width: 24px;
+          margin: 10px;
+          margin-top: 30px;
+        }
+      }
+    }
+
+    #infos {
+      width: 33%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .title_footer::before {
+        content: '';
+        display: inline-block;
+        height: 1.4rem;
+        width: 0.2rem;
+        background: $main-color;
+        margin-right: 1rem;
+    }
+      
+
+    }
+
+    #map {
+      display: flex;
+      flex-direction: column;
+      width: 33%;
+      align-items: center;
+
+
+  .title_footer::before {
+    content: '';
+    display: inline-block;
+    height: 1.4rem;
+    width: 0.2rem;
+    background: $main-color;
+    margin-right: 1rem;
+}
+      img {
+        margin-top: 50px;
+        width: 150px
+      }
+
+    }
+
+  }
+
+  
+}
+
 #event {
   width: 100vw;
   padding: 0 7% 50px 7%;
