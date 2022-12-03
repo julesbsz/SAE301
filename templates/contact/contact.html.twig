@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<header id="header_contact">
+    <span><a href="/">Accueil</a> / Contact</span>
+    <h1>Informations utiles</h1>
+    <p>Hôtel de ville : 9 place de l'Hôtel de Ville - 51100 Reims</p>
+</header>
+
+<section id="contact">
+
+<div id="block">
+    <div id="content-block">
+        <h2>Hôtel de ville de Reims</h2>
+        <p> Ouverture au public du lundi au vendredi de 8h30 à 12h00 et de 13h00 à 17h00.</p> 
+        <p>sur rendez-vous uniquement (en appelant le 03 26 77 78 79 du lundi au vendredi de 8h30 à 12h00) pour :</p>
+        <p>- Passeport (demande ou renouvellement)</p>
+        <p>- Carte nationale d’identité (demande ou renouvellement)</p>
+        <p>- Attestation d’accueil</p>
+    </div>
+</div>
+
+
+<footer> 
+    <div id="réseaux"> <img src="{{ asset('build/reims_logo.jpg') }}" alt="Logo de Reims" /> 
+    <ul> 
+        <li> <a href="https://www.instagram.com/villedereims/?hl=fr"> <img src="{{ asset('build/instagram.png') }}" alt="Logo de Instagram" /> </a>  </li>
+        <li> <a href="https://twitter.com/VilledeReims?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"> <img src="{{ asset('build/twitter.png') }}" alt="Logo de Twitter" />  </a> </li>
+        <li> <a href="https://fr-fr.facebook.com/villereims/"> <img src="{{ asset('build/facebook.png') }}" alt="Logo de Facebook" />  </a> </li>
+        <li> <a href="https://www.linkedin.com/company/reims/?originalSubdomain=fr"> <img src="{{ asset('build/linkedin.png') }}" alt="Logo de Linkedin" />  </a> </li>
+        <li> <a href="https://www.youtube.com/channel/UCnSQ5I8C8H-LKZyVlUq7cNg"> <img src="{{ asset('build/youtube.png') }}" alt="Logo de Youtube" />  </a> </li>
+    </ul>
+    </div>
+    <div id="infos"> <p class="title_footer"> MAIRIE DE REIMS </p>
+    <p> CS 80036 </p>
+    <p> 51722 Reims Cedex </p>
+    <p> <img src="{{ asset('build/phone.png') }}" alt="Logo téléphone" /> <a href="/"> 03 26 77 78 79  </a> </p>
+    <p> <img src="{{ asset('build/mail.png') }}" alt="Logo de mail" /> <a href="/"> Contacter la mairie </a> </p>
+    </div>
+    <div id="map"> <p class="title_footer"> DANS VOTRE QUARTIER </p> 
+     <a href="https://reims.plan-interactif.com/fr/" ><img src="{{ asset('build/footer_map.svg') }}" alt="Logo de Youtube" /> </a></div>
+</footer>
+
+</section>
+
+
+{% endblock %}
