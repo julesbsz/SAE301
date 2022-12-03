@@ -44,7 +44,11 @@
                     Lieux : <span>{{ place.name }}</span><br>
                     Adresse : <span>{{ place.address }}</span><br><br>
 
-                    Places disponibles: <span>{{ place.capacity }}</span><br>
+                    {% if place.capacity == 0 %}
+                        Places disponibles: <span>Aucune limite</span><br>
+                    {% else %}
+                        Places disponibles: <span>{{ place.capacity }}</span><br>
+                    {% endif %}
                 </p>
 
                 <p>{{ event.description }}</p>

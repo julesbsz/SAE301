@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="{{ path('app_home') }}">Accueil</a> / <a href="{{ path('app_cart') }}">Mon Panier</a> / Paiement</span>
+        <h1>Informations de paiement</h1>
+    </header>
+
+    <section class="payment">
+        <h2>Adresse de facturation :</h2>
+
+        {{ form(form) }}
+    </section>
+{% endblock %}

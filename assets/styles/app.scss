@@ -173,11 +173,28 @@ header {
   justify-content: center;
   padding: 150px 7% 30px 7%;
 
+  &#home {
+    align-items: center;
+    img {
+      width: 80%;
+      height: auto;
+    }
+  }
+
   span,
   a {
     color: $main-color;
     text-decoration: none;
     padding-left: 2px;
+  }
+
+  a {
+    display: inline-block;
+    transition: all 0.4s;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 
   img {

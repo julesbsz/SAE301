@@ -173,7 +173,7 @@
                             <p>TVA</p>
                             <p>${totalTVA} €</p>
                         </div>
-                        <a class="button" href="#">Payer ${totalTTC} €</a>
+                        <a class="button" href="{{ path('app_payment') }}">Payer ${totalTTC} €</a>
                     `;
                 document.querySelector(".cart-checkout").innerHTML = checkout_html;
             }

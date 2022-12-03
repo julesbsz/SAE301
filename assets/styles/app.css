@@ -150,11 +150,25 @@ header {
   justify-content: center;
   padding: 150px 7% 30px 7%;
 }
+header#home {
+  align-items: center;
+}
+header#home img {
+  width: 80%;
+  height: auto;
+}
 header span,
 header a {
   color: #4081BC;
   text-decoration: none;
   padding-left: 2px;
+}
+header a {
+  display: inline-block;
+  transition: all 0.4s;
+}
+header a:hover {
+  transform: translateY(-3px);
 }
 header img {
   height: 40px;
