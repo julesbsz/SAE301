@@ -29,8 +29,11 @@ class Events
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $date = null;
+
+    #[ORM\ManyToOne(inversedBy: 'event_id')]
+    private ?Places $places = null;
 
     public function getId(): ?int
     {
@@ -97,14 +100,26 @@ class Events
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?string
     {
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setDate(?string $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getPlaces(): ?Places
+    {
+        return $this->places;
+    }
+
+    public function setPlaces(?Places $places): self
+    {
+        $this->places = $places;
 
         return $this;
     }

@@ -4,12 +4,12 @@
     <ul>
         <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">Accueil</a></li>
         <li><a href="{{ path('app_events') }}" class="{{ app.request.get('_route') == 'app_events' ? 'link-active' }}">Événements</a></li>
-        <li><a href="{{ path('app_home') }}">À propos</a></li>
-        <li><a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') == 'app_contact' ? 'link-active' }}">Contact</a></li>
+        <li><a href="{{ path('app_lieux') }}" class="{{ app.request.get('_route') == 'app_lieux' ? 'link-active' }}">Lieux</a></li>
+        <li><a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') == 'app_contact' ? 'link-active' }}">Contact & Informations</a></li>
 
         {% if app.user %}
             <div class="account">
-                <i class="fa-solid fa-user"></i>
+                    <a href="{{ path('app_profile') }}"><i class="fa-solid fa-user"></i></a>
             </div>
         {% else %}
             <li><a class="button" href="{{ path('app_login') }}">S'identifier</a></li>
@@ -17,6 +17,14 @@
     </ul>
 </nav>
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
-{#    <li><a href="{{ path('admin') }}">Administration</a></li>#}
-{#{% endif %}#}
+<script>
+    const nav = document.querySelector('nav');
+
+    addEventListener('scroll', () => {
+        if(window.scrollY <= 10) {
+            nav.style.boxShadow = 'none';
+        } else {
+            nav.style.boxShadow = '3px 3px 11.5px -5.5px #dddddd';
+        }
+    });
+</script>

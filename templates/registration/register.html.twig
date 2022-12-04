@@ -1,17 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <section class="login">
+        <section id="login-left"></section>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <section id="login-right">
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_start(registrationForm) }}
+                <h1>Créez votre compte</h1>
+
+                {{ form_row(registrationForm.email, {
+                    label: 'Email :',
+                    'attr': {
+                        'placeholder': 'adresse@mail.fr'
+                    }
+                }) }}
+
+                {{ form_row(registrationForm.plainPassword.first, {
+                    'attr': {
+                        'placeholder': 'SuperMotDePasse365$'
+                    }
+                }) }}
+
+                {{ form_row(registrationForm.plainPassword.second, {
+                    'attr': {
+                        'placeholder': 'SuperMotDePasse365$'
+                    }
+                }) }}
+
+                <div class="conditions">
+                    {{ form_row(registrationForm.agreeTerms, {
+                        label: 'J\'accepte les <a class="links" target="_blank" href="' ~ path("app_cgu") ~ '">' ~ "conditions d'utilisation" ~ '</a>',
+                        label_html: true,
+                        'attr': {
+                            'class': 'conditions_checkbox'
+                        }
+                    }) }}
+                </div>
+
+                <button type="submit" class="btn button">S'inscrire</button>
+                <p>Déjà un compte ? <a href="{{ path('app_login') }}">S'identifier</a></p>
+            {{ form_end(registrationForm) }}
+        </section>
+    </section>
+
+    <script>
+
+        const left = document.querySelector('#login-left');
+        const checkbox = document.querySelector('.conditions_checkbox');
+        const parent = checkbox.parentElement;
+
+        parent.style.display = 'flex';
+        parent.style.flexDirection = 'row-reverse';
+        parent.style.justifyContent = 'flex-end';
+        parent.style.gap = '15px';
+        parent.style.order = '2';
+        parent.style.marginBottom = '20px';
+    </script>
 {% endblock %}

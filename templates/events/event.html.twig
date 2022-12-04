@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="/">Accueil</a> / <a href="{{ path('app_events') }}">Événements</a> / {{ event.name }}</span>
+        <h1 id="event-name">{{ event.name }}</h1>
+    </header>
+
+    <section id="event">
+        <div>
+            <img src="{{ asset("build/" ~ event.image) }}" alt="{{ event.name }}" class="img-fluid">
+
+            <div>
+                <p>
+                    Date: <span>{{ event.date }}</span><br>
+                    Genre: <span>{{ event.genre }}</span><br><br>
+
+                    Lieux : <span>{{ place.name }}</span><br>
+                    Adresse : <span>{{ place.address }}</span><br><br>
+
+                    {% if place.capacity == 0 %}
+                        Places disponibles: <span>Aucune limite</span><br>
+                    {% else %}
+                        Places disponibles: <span>{{ place.capacity }}</span><br>
+                    {% endif %}
+                </p>
+
+                <p>{{ event.description }}</p>
+
+                {% if event.price == 0 %}
+                    <span id="price">Prix : Gratuit</span>
+                {% else %}
+                    <span id="price">Prix : {{ event.price }} €</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card-action">
+            <a id="order" class="button">Ajouter au panier</a>
+            <div>
+                <i id="add" class="fa-solid fa-plus"></i>
+                <p id="quantity">1</p>
+                <i id="del" class="fa-solid fa-minus"></i>
+            </div>
+        </div>
+
+        <a class="links" style="margin-top: -15px" href="{{ path('app_events', {'id': 'tous'}) }}">Retour aux événements</a>
+    </section>
+
+    <script defer>
+        let cookies = recupCookie("cart");
+
+        if(cookies != null) {
+            cookies = JSON.parse(cookies);
+        } else {
+            cookies = [];
+        }
+
+        let cart = 0;
+        cookies.forEach(function(event) {
+            cart += event.quantity;
+        });
+
+        function recupCookie(cart){
+            if (document.cookie.length == 0) {
+                return null;
+            }
+
+            let cookies = document.cookie.split("; ");
+            cookies.forEach(element => {
+                let item = element.split("=");
+                if(item[0] === cart) {
+                    output = item[1]
+                } else {
+                    output = null;
+                }
+            })
+            return output;
+        }
+
+        const add = document.getElementById('add');
+        const del = document.getElementById('del');
+        let quantity = document.getElementById('quantity');
+        const order = document.getElementById('order');
+
+        add.addEventListener('click', () => {
+            quantity.textContent = parseInt(quantity.textContent) + 1;
+        });
+
+        del.addEventListener('click', () => {
+            if ((parseInt(quantity.textContent) > 1) && (parseInt(quantity.textContent) > 2)) {
+                quantity.textContent = parseInt(quantity.textContent) - 1;
+                return;
+            }
+
+            if (parseInt(quantity.textContent) == 2) {
+                quantity.textContent = parseInt(quantity.textContent) - 1;
+            }
+        });
+
+        order.addEventListener('click', () => {
+            const id = {{ event.id }};
+            const quantity = parseInt(document.getElementById('quantity').textContent);
+            const price = {{ event.price }};
+
+            let index = cookies.findIndex(element => element.id == id);
+            if (index > -1) {
+                cookies[index].quantity += quantity;
+            } else {
+                let description = '{{ event.description }}';
+                let descriptionShort = description.substring(0, 100) + '...';
+                cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}', 'description': descriptionShort });
+            }
+
+            cart += quantity;
+            document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+
+            if(quantity > 1) {
+                showToast(`${quantity} places ont été ajoutées au panier`, "#4081BC", 3000, "/panier")
+            } else {
+                showToast(`${quantity} place a été ajoutées au panier`, "#4081BC", 3000, "/panier")
+            }
+        });
+
+        function showToast(text, color, duration, destination) {
+            Toastify({
+                text: text,
+                duration: duration,
+                close: true,
+                destination: destination,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: color,
+                    paddingBottom: "14px",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: 100, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+        }
+    </script>
+{% endblock %}

@@ -2,27 +2,41 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
+use App\Repository\EventsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\Requirement\Requirement;
 
 class EventsController extends AbstractController
 {
-    #[Route('/evenements', name: 'app_events')]
+    #[Route('/evenements/{id}', name: 'app_events', requirements:['id' => Requirement::ASCII_SLUG,], defaults:['id'=>'tous'])]
     public function index(
-        EntityManagerInterface $entityManager,
-        UserRepository $userRepository
+        $id,
+        EventsRepository $eventsRepository,
     ): Response
     {
-        $events = $userRepository->findAll();
-        if($events === null) {
-            throw $this->createNotFoundException('Aucun événement trouvé');
+        if($id === 'tous') {
+            $events = $eventsRepository->findAll();
+
+            if($events === null) {
+                throw $this->createNotFoundException('Aucun événement trouvé');
+            } else {
+                return $this->render('events/events.html.twig', [
+                    'events' => $events,
+                ]);
+            }
         } else {
-            return $this->render('events/index.html.twig', [
-                'events' => $events,
-            ]);
+            $event = $eventsRepository->find($id);
+            if($event === null) {
+                throw $this->createNotFoundException('Aucun événement trouvé');
+            } else {
+                $place = $event->getPlaces();
+                return $this->render('events/event.html.twig', [
+                    'event' => $event,
+                    'place' => $place,
+                ]);
+            }
         }
     }
 }

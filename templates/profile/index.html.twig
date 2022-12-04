@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="/">Accueil</a> / Mon Compte</span>
+        <h1>Mon Compte</h1>
+    </header>
+
+    <section class="account-section">
+        <h2>Historique de vos commandes</h2>
+        <div class="commands-history">
+            {% for order in orders %}
+                <article>
+                    <p>Commande n°{{ order.id }}</p>
+                    <p>Date de la commande : {{ order.date|date('d/m/Y') }}</p>
+                    {% if order.places == 1 %}
+                        <p>1 place achetée</p>
+                    {% else %}
+                        <p>{{ order.places }} places achetées</p>
+                    {% endif %}
+                    <a class="links" href="{{ path('app_invoice', {id: order.id})}}">Télécharger la facture</a>
+                </article>
+            {% endfor %}
+        </div>
+
+        <div class="user-action">
+            <a class="button" href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a style="color: red" class="links" href="{{ path('app_delete_account', {'id': app.user.id}) }}">Supprimer mon compte</a>
+        </div>
+    </section>
+{% endblock %}

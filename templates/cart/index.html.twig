@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+    <header>
+        <span><a href="/">Accueil</a> / Mon Panier</span>
+        <h1>Mon panier</h1>
+    </header>
+
+    <section class="cart">
+        <div class="cart-empty">
+            <img src="{{ asset('build/empty-cart.png') }}" alt="Panier vide">
+            <span>Votre panier est vide :/</span>
+            <a href="{{ path('app_events', {'id': 'tous'}) }}" class="button">Explorer les événements</a>
+        </div>
+        <div class="cart-content"></div>
+        <div class="cart-checkout"></div>
+    </section>
+
+    <script defer>
+        let cookies = recupCookie("cart");
+        console.log(cookies);
+
+        if(cookies != null) {
+            cookies = JSON.parse(cookies);
+        } else {
+            cookies = [];
+        }
+
+        let cart = 0;
+        cookies.forEach(function(event) {
+            cart += event.quantity;
+        });
+
+        function recupCookie(cart){
+            if (document.cookie.length == 0) {
+                return null;
+            }
+
+            let cookies = document.cookie.split("; ");
+            cookies.forEach(element => {
+                let item = element.split("=");
+                if(item[0] === cart) {
+                    output = item[1]
+                } else {
+                    output = null;
+                }
+            })
+            return output;
+        }
+
+        setCheckout();
+
+        cookies.forEach(item => {
+            if(item.price == 0) {
+                price = "Gratuit";
+            } else {
+                price = item.price + "€";
+            }
+
+            let cart_html = `
+                <article class="event" id="${item.id}">
+                    <img src='build/${item.picture}' alt=${item.name}>
+                    <div>
+                        <h2>${item.name}</h2>
+                        <p>${item.description}</p>
+                        <p class="price">Prix : ${price}</p>
+
+                        <div>
+                            <div class="action">
+                                <i id="add" class="fa-solid fa-plus add-act"></i>
+                                <span id="quantity">${item.quantity}</span>
+                                <i id="del" class="fa-solid fa-minus supp-act"></i>
+                            </div>
+                            <i id="${item.id}" class="fa-solid fa-trash-can del"></i>
+                        </div>
+
+                    </div>
+                </article>
+<!--                <hr>--
+            `;
+            document.querySelector(".cart-content").innerHTML += cart_html;
+        })
+
+        const del = document.querySelectorAll(".del");
+        del.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.id;
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        cookies.splice(index, 1);
+
+                        showToast("La place a été supprimée du panier", "#DC3545", 3000, "")
+                        element.parentElement.parentElement.parentElement.remove();
+                        cart -= element.quantity;
+                        document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                    }
+                });
+                setCheckout();
+            })
+        })
+
+        const add = document.querySelectorAll(".add-act");
+        const supp = document.querySelectorAll(".supp-act");
+
+        add.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.parentElement.parentElement.parentElement.parentElement.id;
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        event.quantity++;
+                        element.parentElement.children[1].innerHTML = event.quantity;
+                        cart += 1;
+                        document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                    }
+                });
+                setCheckout();
+            });
+        })
+
+        supp.forEach(element => {
+            element.addEventListener("click", function () {
+                let id = element.parentElement.parentElement.parentElement.parentElement.id;
+                cookies.forEach(function(event, index) {
+                    if(event.id == id) {
+                        if(event.quantity > 1) {
+                            event.quantity--;
+                            if(event.quantity == 1) {
+                                element.parentElement.children[1].innerHTML = event.quantity;
+                            } else {
+                                element.parentElement.children[1].innerHTML = event.quantity;
+                            }
+                            cart -= 1;
+                            document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
+                        }
+                    }
+                });
+                setCheckout();
+            })
+        })
+
+        function setCheckout() {
+            let total = 0;
+            let totalTTC = 0;
+            let totalTVA = 0;
+            let items = 0;
+            cookies.forEach(function (event) {
+                total += Math.round(event.price * event.quantity);
+                totalTTC += Math.round(event.price * event.quantity * 1.2);
+                totalTVA += Math.round(event.price * event.quantity * 0.2);
+                items += event.quantity;
+            });
+
+            if (items == 0) {
+                document.querySelector('.cart-checkout').style.display = "none";
+                document.querySelector('.cart-content').style.display = "none";
+                document.querySelector('.cart-empty').style.display = "flex";
+            } else {
+                document.querySelector('.cart-checkout').style.display = "flex";
+                document.querySelector('.cart-content').style.display = "flex";
+                document.querySelector('.cart-empty').style.display = "none";
+
+                let checkout_html = `
+                        <div>
+                            <h2>Total</h2>
+                            <h2>${totalTTC} €</h2>
+                        </div>
+                        <hr>
+                        <div>
+                            <p>${items} places</p>
+                            <p>${total} €</p>
+                        </div>
+                        <div style="margin-top: -20px">
+                            <p>TVA</p>
+                            <p>${totalTVA} €</p>
+                        </div>
+                        <a class="button" href="{{ path('app_payment') }}">Payer ${totalTTC} €</a>
+                    `;
+                document.querySelector(".cart-checkout").innerHTML = checkout_html;
+            }
+        }
+
+        function showToast(text, color, duration, destination) {
+            Toastify({
+                text: text,
+                duration: duration,
+                close: true,
+                destination: destination,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: color,
+                    paddingBottom: "14px",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+        }
+    </script>
+{% endblock %}

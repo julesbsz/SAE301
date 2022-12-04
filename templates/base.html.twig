@@ -9,6 +9,8 @@
         {# Links & Scripts #}
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>💩️</text></svg>">
         <script src="https://kit.fontawesome.com/314e9f83f9.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -16,11 +18,17 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('main') }}
         {% endblock %}
     </head>
     <body>
         {% include('parts/nav.html.twig') %}
 
+        <div id="cart-button">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+
         {% block body %}{% endblock %}
+        {% include('parts/footer.html.twig') %}
     </body>
 </html>

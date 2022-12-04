@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Facture n°{{ order.id }}</title>
+</head>
+<body>
+
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            font-size: 18px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            background-color: #FFFFFF;
+            border-collapse: collapse;
+            border-width: 2px;
+            border-color: #F4F1F1;
+            border-style: solid;
+            color: #000000;
+        }
+
+        table td, table th {
+            border-width: 2px;
+            border-color: #F4F1F1;
+            border-style: solid;
+            padding: 5px;
+        }
+
+        table thead {
+            background-color: #F4F1F1;
+        }
+    </style>
+
+    <h1>Facture n°{{ order.id }}</h1>
+    <p>Date de commande : {{ order.date|date('d/m/Y') }}</p>
+    <p>Client : {{ order.firstname }} {{ order.lastname }}</p>
+    <p>Adresse de livraison : {{ order.address }} {{ order.country }} {{ order.zipcode }} {{ order.city }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix unitaire</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }} €</td>
+                    <td>{{ product.quantity * product.price }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total HT</td>
+                <td>{{ totalHT }} €</td>
+            </tr>
+            <tr>
+                <td colspan="3">TVA (20%)</td>
+                <td>{{ totalTVA }} €</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total TTC</td>
+                <td>{{ totalTTC }} €</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
