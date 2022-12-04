@@ -170,7 +170,6 @@ nav {
 }
 
 .home {
-
   h1 {
     margin-top: -50px;
     margin-left: 219.5px;
@@ -178,8 +177,6 @@ nav {
   #gradient {
 
     background: linear-gradient(0.25turn, RGB(226, 239, 249), white);
-
-  
 
   #slider {
     margin-left: 200px;
@@ -963,7 +960,7 @@ footer {
       flex-direction: column;
       gap: 10px;
 
-      &:nth-child(3) {
+      &:nth-child(4) {
         .form-row {
           width: 50%;
         }
@@ -1056,7 +1053,7 @@ footer {
     flex-direction: column;
 
     article {
-      padding: 0 30px;
+      padding: 0 30px 3px 30px;
       height: 40px;
       width: 100%;
       display: flex;

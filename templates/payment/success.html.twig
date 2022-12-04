@@ -14,4 +14,9 @@
 
         <a style="margin-top: 15px" class="links" href="{{ path('app_home') }}">Retour à l'accueil</a>
     </header>
+
+    <script>
+        // reset cart in cookies
+        document.cookie = 'cart=; Max-Age=0; path=/; domain=' + location.hostname;
+    </script>
 {% endblock %}

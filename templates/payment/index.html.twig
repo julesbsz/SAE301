@@ -12,6 +12,7 @@
         {{ form_start(form)  }}
             <div class="payment-form">
                 {{ form_errors(form) }}
+                {{ form_widget(form.cookies) }}
 
                 <div class="form-group">
                     <div class="form-row">
@@ -56,7 +57,6 @@
 
     <script defer>
         let cookies = recupCookie("cart");
-        console.log(cookies);
 
         if(cookies != null) {
             cookies = JSON.parse(cookies);
@@ -122,6 +122,11 @@
             payBtns.forEach(btn => {
                 btn.textContent = "Payer " + totalTTC + "€";
             })
+
+            let cookiesInput = document.getElementById("payment_form_cookies");
+            let placesInput = document.getElementById("payment_form_places");
+            cookiesInput.value = JSON.stringify(cookies);
+            placesInput.value = items;
         }
     </script>
 {% endblock %}

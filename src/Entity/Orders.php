@@ -42,6 +42,12 @@ class Orders
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: false)]
+    private ?string $products = null;
+
+    #[ORM\Column]
+    private ?int $places = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +157,30 @@ class Orders
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getProducts(): string
+    {
+        return $this->products;
+    }
+
+    public function setProducts(string $products): self
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    public function getPlaces(): ?int
+    {
+        return $this->places;
+    }
+
+    public function setPlaces(int $places): self
+    {
+        $this->places = $places;
 
         return $this;
     }

@@ -11,26 +11,18 @@
     <section class="account-section">
         <h2>Historique de vos commandes</h2>
         <div class="commands-history">
-            <article>
-                <p>Commande n°1</p>
-                <p>Date de la commande : 01/03/2021</p>
-                <p>6 places achetées</p>
-                <a class="links" href="">Télécharger la facture</a>
-            </article>
-
-            <article>
-                <p>Commande n°1</p>
-                <p>Date de la commande : 01/03/2021</p>
-                <p>6 places achetées</p>
-                <a class="links" href="">Télécharger la facture</a>
-            </article>
-
-            <article>
-                <p>Commande n°1</p>
-                <p>Date de la commande : 01/03/2021</p>
-                <p>6 places achetées</p>
-                <a class="links" href="">Télécharger la facture</a>
-            </article>
+            {% for order in orders %}
+                <article>
+                    <p>Commande n°{{ order.id }}</p>
+                    <p>Date de la commande : {{ order.date|date('d/m/Y') }}</p>
+                    {% if order.places == 1 %}
+                        <p>1 place achetée</p>
+                    {% else %}
+                        <p>{{ order.places }} places achetées</p>
+                    {% endif %}
+                    <a class="links" href="{{ path('app_invoice', {id: order.id})}}">Télécharger la facture</a>
+                </article>
+            {% endfor %}
         </div>
 
         <div class="user-action">

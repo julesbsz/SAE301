@@ -43,6 +43,8 @@ class PaymentController extends AbstractController
                 $order->setZipcode($data['zip']);
                 $order->setCountry($data['country']);
                 $order->setPhone($data['phone']);
+                $order->setProducts($data['cookies']);
+                $order->setPlaces($data['places']);
                 $user = $this->getUser();
                 $order->setUser($user);
 
