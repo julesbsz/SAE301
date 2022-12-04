@@ -9,8 +9,119 @@
     </header>
 
     <section class="payment">
-        <h2>Adresse de facturation :</h2>
+        {{ form_start(form)  }}
+            <div class="payment-form">
+                {{ form_errors(form) }}
 
-        {{ form(form) }}
+                <div class="form-group">
+                    <div class="form-row">
+                        {{ form_widget(form.lastname) }}
+                        {{ form_widget(form.firstname) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_widget(form.address) }}
+                    <div class="form-row">
+                        {{ form_widget(form.country) }}
+                        {{ form_widget(form.city) }}
+                        {{ form_widget(form.zip) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                    <div class="form-row">
+                        {{ form_widget(form.phone) }}
+                    </div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-card-content">
+                        <p>**** **** **** 9361</p>
+                        <div>
+                            <p>Date Exp : 03/24</p>
+                            <p>CVV : ***</p>
+                        </div>
+                    </div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/1200px-Mastercard_2019_logo.svg.png" alt="">
+                </div>
+
+                <button type="submit" class="button"></button>
+            </div>
+
+            <div class="cart-checkout"></div>
+        {{ form_end(form) }}
     </section>
+
+    <script defer>
+        let cookies = recupCookie("cart");
+        console.log(cookies);
+
+        if(cookies != null) {
+            cookies = JSON.parse(cookies);
+        } else {
+            cookies = [];
+        }
+
+        let cart = 0;
+        cookies.forEach(function(event) {
+            cart += event.quantity;
+        });
+
+        function recupCookie(cart){
+            if (document.cookie.length == 0) {
+                return null;
+            }
+
+            let cookies = document.cookie.split("; ");
+            cookies.forEach(element => {
+                let item = element.split("=");
+                if(item[0] === cart) {
+                    output = item[1]
+                } else {
+                    output = null;
+                }
+            })
+            return output;
+        }
+
+        setCheckout();
+
+        function setCheckout() {
+            let total = 0;
+            let totalTTC = 0;
+            let totalTVA = 0;
+            let items = 0;
+            cookies.forEach(function (event) {
+                total += Math.round(event.price * event.quantity);
+                totalTTC += Math.round(event.price * event.quantity * 1.2);
+                totalTVA += Math.round(event.price * event.quantity * 0.2);
+                items += event.quantity;
+            });
+
+            let checkout_html = `
+                    <div>
+                        <h2>Total</h2>
+                        <h2>${totalTTC} €</h2>
+                    </div>
+                    <hr>
+                    <div>
+                        <p>${items} places</p>
+                        <p>${total} €</p>
+                    </div>
+                    <div style="margin-top: -20px">
+                        <p>TVA</p>
+                        <p>${totalTVA} €</p>
+                    </div>
+                    <button class="button" type="submit">Payer ${totalTTC} €</button>
+                `;
+            document.querySelector(".cart-checkout").innerHTML = checkout_html;
+
+            let payBtns = document.querySelectorAll('.button')
+            payBtns.forEach(btn => {
+                btn.textContent = "Payer " + totalTTC + "€";
+            })
+        }
+    </script>
 {% endblock %}

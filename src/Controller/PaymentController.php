@@ -30,8 +30,9 @@ class PaymentController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $data = $form->getData();
                 // generate pdf and send email
-                return $this->redirectToRoute('app_payment/success');
+                return $this->redirectToRoute('app_payment', ['status' => "success"]);
             }
+
             return $this->renderForm('payment/index.html.twig', [
                 'form' => $form,
             ]);

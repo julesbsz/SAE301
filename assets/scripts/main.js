@@ -13,10 +13,20 @@
 
 const cart = document.getElementById('cart-button');
 
-if(window.location.pathname === "/panier") {
-    cart.style.display = "none";
-} else {
-    cart.style.display = "flex";
+const path = window.location.pathname
+
+switch (path) {
+    case "/panier":
+        cart.style.display = "none";
+        break;
+
+    case "/paiement":
+        cart.style.display = "none";
+        break;
+
+    default:
+        cart.style.display = "flex";
+        break;
 }
 
 cart.addEventListener('click', function() {

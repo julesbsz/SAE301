@@ -250,14 +250,10 @@ header img {
 }
 .search .wrapper .filters.dragging {
   scroll-behavior: auto;
-  cursor: -webkit-grab;
   cursor: grab;
 }
 .search .wrapper .filters.dragging .filter {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .search .wrapper .filters .filter {
   cursor: pointer;
@@ -362,14 +358,6 @@ header img {
   font-family: MarianneLight;
   color: #787878;
   font-size: 16px;
-}
-.login #login-right form input[type=email]::-moz-placeholder, .login #login-right form input[type=password]::-moz-placeholder {
-  font-style: italic;
-  color: #797979;
-}
-.login #login-right form input[type=email]:-ms-input-placeholder, .login #login-right form input[type=password]:-ms-input-placeholder {
-  font-style: italic;
-  color: #797979;
 }
 .login #login-right form input[type=email]::placeholder,
 .login #login-right form input[type=password]::placeholder {
@@ -555,8 +543,6 @@ header img {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  height: -webkit-max-content;
-  height: -moz-max-content;
   height: max-content;
   align-items: center;
   justify-content: center;
@@ -616,13 +602,9 @@ header img {
   min-width: 200px;
   max-width: 200px;
   min-height: 200px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center top;
-     object-position: center top;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 10px;
 }
 .cart .cart-content article div {
@@ -690,8 +672,6 @@ header img {
 .cart .cart-checkout {
   background-color: #F4F1F1;
   width: 350px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
   border-radius: 15px;
   display: flex;
@@ -714,6 +694,115 @@ header img {
   width: 80%;
   margin: 0 auto;
   border: 0.5px solid #D2D1D1;
+}
+
+.payment form {
+  width: 100%;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+}
+.payment .cart-checkout {
+  background-color: #F4F1F1;
+  width: 350px;
+  height: fit-content;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  gap: 30px;
+}
+.payment .cart-checkout div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment .cart-checkout div p {
+  color: #000;
+  font-family: MarianneBold;
+}
+.payment .cart-checkout hr {
+  width: 80%;
+  margin: 0 auto;
+  border: 0.5px solid #D2D1D1;
+}
+.payment .payment-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.payment .payment-form input {
+  height: 50px;
+  width: 100%;
+  border: none;
+  background-color: #F5F1F1;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-family: MarianneLight;
+  padding-bottom: 3px;
+  outline: none;
+}
+.payment .payment-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.payment .payment-form .form-group:nth-child(3) .form-row {
+  width: 50%;
+}
+.payment .payment-form .form-group .form-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.payment .payment-form .payment-card {
+  padding: 0 40px 0 35px;
+  height: 100px;
+  width: fit-content;
+  border-radius: 15px;
+  border: 2px solid #F5F1F1;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.payment .payment-form .payment-card:hover {
+  background-color: #F5F1F1;
+}
+.payment .payment-form .payment-card:before {
+  content: "";
+  height: 12px;
+  width: 12px;
+  background-color: #4081BC;
+  border-radius: 25px;
+  margin-right: 30px;
+}
+.payment .payment-form .payment-card .payment-card-content p {
+  font-family: MarianneBold;
+  font-size: 20px;
+  color: black;
+}
+.payment .payment-form .payment-card .payment-card-content div {
+  margin-top: 10px;
+  display: flex;
+  gap: 30px;
+}
+.payment .payment-form .payment-card .payment-card-content div p {
+  font-family: MarianneLight;
+  color: #787878;
+  font-size: 16px;
+}
+.payment .payment-form .payment-card img {
+  height: 40%;
+  padding-left: 40px;
+}
+.payment .button {
+  width: 150px;
+  font-family: MarianneBold;
+  font-size: 16px;
 }
 
 /**************************\
@@ -798,11 +887,15 @@ header img {
   -moz-osx-font-smoothing: grayscale;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  transition: -webkit-transform 0.25s ease-out;
   transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
 }
 
 .modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }
 
@@ -819,28 +912,12 @@ header img {
 /**************************\
   Demo Animation Style
 \**************************/
-@-webkit-keyframes mmfadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @keyframes mmfadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes mmfadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 @keyframes mmfadeOut {
@@ -851,28 +928,12 @@ header img {
     opacity: 0;
   }
 }
-@-webkit-keyframes mmslideIn {
-  from {
-    transform: translateY(15%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
 @keyframes mmslideIn {
   from {
     transform: translateY(15%);
   }
   to {
     transform: translateY(0);
-  }
-}
-@-webkit-keyframes mmslideOut {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-10%);
   }
 }
 @keyframes mmslideOut {
@@ -892,26 +953,24 @@ header img {
 }
 
 .micromodal-slide[aria-hidden=false] .modal__overlay {
-  -webkit-animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .micromodal-slide[aria-hidden=false] .modal__container {
-  -webkit-animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .micromodal-slide[aria-hidden=true] .modal__overlay {
-  -webkit-animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .micromodal-slide[aria-hidden=true] .modal__container {
-  -webkit-animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
-          animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .micromodal-slide .modal__container,
 .micromodal-slide .modal__overlay {
   will-change: transform;
-}/*# sourceMappingURL=app.css.map */
+}
+
+/*# sourceMappingURL=app.css.map */
