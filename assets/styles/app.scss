@@ -176,24 +176,49 @@ nav {
   #slider {
     margin-top: 20px;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    overflow-x: scroll;
+
 
     .slide {
       cursor: pointer;
+      position: relative;
+      
 
       .slide-content {
-        opacity: 1;
-        position: absolute;
 
         .slide-text {
-          h2 {
+          position: absolute;
+          top: 49%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(64, 129, 188, 0.5);
+          height: 234px;
+          width: 246px;
+          border-radius: 10px;
+          opacity: 0;
+
+          .slide-title {
             font-size: 20px;
-            margin-bottom: 20px;
+            text-align: center;
+            margin-top: 80px;
+
+            h2 {
+              font-size: 20px;
+              margin-bottom: 20px;
+              color: white;
+            }
+            p {
+              font-size: 15px;
+              color: white;
+            }
           }
-          p {
-            font-size: 15px;
-          }
+
+        }
+
+        .slide-text:hover {
+          opacity: 1;
+          transition: all 0.4s;
         }
 
       }
