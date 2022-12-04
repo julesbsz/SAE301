@@ -27,6 +27,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   font-family: MarianneRegular, sans-serif;
+  overflow-x: hidden;
 }
 
 .links {
@@ -171,29 +172,43 @@ nav {
 
 .home {
   h1 {
-    margin-top: -50px;
-    margin-left: 219.5px;
+    padding: 10px 7%;
+    margin: 30px 0 0 0;
   }
-  #gradient {
 
+  a {
+    margin: 0 0 30px 7%;
+  }
+
+  #gradient {
     background: linear-gradient(0.25turn, RGB(226, 239, 249), white);
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 47%);
+
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 300px;
+    }
 
   #slider {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 20px;
+    width: 100%;
+    margin-left: 7%;
+    padding: 30px 0;
     display: flex;
     align-items: center;
     overflow-x: scroll;
-
+    gap: 30px;
 
     .slide {
       cursor: pointer;
       position: relative;
-      
 
       .slide-content {
-
         .slide-text {
           position: absolute;
           top: 49%;
@@ -231,16 +246,19 @@ nav {
       }
 
       img {
-height: 234px;
-width: 246px;
-border-radius: 10px;
-margin: 0 20px 0 20px;
-      
+        height: 234px;
+        width: 246px;
+        border-radius: 10px;
       }
 
     }
   }
 }
+  iframe {
+    width: 100%;
+    padding: 10px 7%;
+    height: 500px;
+  }
 }
 
 header {

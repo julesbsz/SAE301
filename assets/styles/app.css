@@ -22,6 +22,7 @@ body {
   width: 100vw;
   min-height: 100vh;
   font-family: MarianneRegular, sans-serif;
+  overflow-x: hidden;
 }
 
 .links {
@@ -147,19 +148,33 @@ nav ul .account a:hover {
 }
 
 .home h1 {
-  margin-top: -50px;
-  margin-left: 219.5px;
+  padding: 10px 7%;
+  margin: 30px 0 0 0;
+}
+.home a {
+  margin: 0 0 30px 7%;
 }
 .home #gradient {
   background: linear-gradient(0.25turn, RGB(226, 239, 249), white);
+  position: relative;
+}
+.home #gradient:after {
+  position: absolute;
+  content: "";
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 47%);
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
 }
 .home #gradient #slider {
-  margin-left: 200px;
-  margin-right: 200px;
-  margin-top: 20px;
+  width: 100%;
+  margin-left: 7%;
+  padding: 30px 0;
   display: flex;
   align-items: center;
   overflow-x: scroll;
+  gap: 30px;
 }
 .home #gradient #slider .slide {
   cursor: pointer;
@@ -198,7 +213,11 @@ nav ul .account a:hover {
   height: 234px;
   width: 246px;
   border-radius: 10px;
-  margin: 0 20px 0 20px;
+}
+.home iframe {
+  width: 100%;
+  padding: 10px 7%;
+  height: 500px;
 }
 
 header {
