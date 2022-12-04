@@ -3,5 +3,25 @@
 {% block title %}Hello LieuxController!{% endblock %}
 
 {% block body %}
-    <h1>Test</h1>
+    <header>
+        <span><a href="/">Accueil</a> / Lieux</span>
+        <h1>Les lieux</h1>
+    </header>
+
+        <section class="search">
+        <input type="search" placeholder="Rechercher un lieux, une date ou une adresse...">
+    </section>
+    
+        <section class="events">
+        {% for lieu in places %}
+            <article class="event">
+                <div>
+                    <h2>{{ lieu.name }}</h2>
+                    <span>{{ lieu.address }} avec une capacité de : {{ lieu.capacity }} personnes  </span>
+                    {# <a class="button" href="{{ path('app_events', {id: event.id}) }}">En savoir plus</a> #}
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+
 {% endblock %}
