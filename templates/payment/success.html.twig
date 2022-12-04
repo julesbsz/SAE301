@@ -6,5 +6,12 @@
     <header>
         <span><a href="{{ path('app_home') }}">Accueil</a> / <a href="{{ path('app_cart') }}">Mon Panier</a> / Paiement / Paiement Réussi</span>
         <h1>La commande a bien été enregistré</h1>
+
+        <p style="margin-top: 40px">
+            Merci pour votre commande, vous pouvez télécharger le récapitulatif de la commande directement dans la page de votre profil.<br>
+            Un mail de confirmation a été également envoyé à {{ user.email }}
+        </p>
+
+        <a style="margin-top: 15px" class="links" href="{{ path('app_home') }}">Retour à l'accueil</a>
     </header>
 {% endblock %}

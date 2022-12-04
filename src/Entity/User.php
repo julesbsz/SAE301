@@ -67,21 +67,59 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
+    const ROLE_DEFAULT = 'ROLE_USER';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @see UserInterface
      */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        // give everyone ROLE_USER!
+        if (!in_array(static::ROLE_DEFAULT, $roles)) {
+            $roles[] = static::ROLE_DEFAULT;
+        }
+        return $roles;
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(?array $roles): self
     {
-        $this->roles = $roles;
+        $this->roles = array();
+
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+
+        return $this;
+    }
+
+    public function addRole($role): static
+    {
+        $role = strtoupper($role);
+        if ($role === static::ROLE_DEFAULT) {
+            return $this;
+        }
+
+        if (!in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
+    public function hasRole($role): bool
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
+    public function removeRole($role): static
+    {
+        if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
+            unset($this->roles[$key]);
+            $this->roles = array_values($this->roles);
+        }
 
         return $this;
     }

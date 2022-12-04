@@ -76,21 +76,23 @@ p {
 
 #cart-button {
   position: fixed;
+  z-index: 10;
   bottom: 20px;
   right: 30px;
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #4081BC;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s;
 }
 #cart-button i {
   color: #fff;
   font-size: 20px;
+  transform: translateX(-1px);
 }
 #cart-button:hover {
   transform: translateY(-4px);
@@ -129,13 +131,14 @@ nav ul .account a {
   height: 40px;
   width: 40px;
   font-size: 22px;
-  color: #4081BC;
+  color: white;
   cursor: pointer;
+  background-color: #4081BC;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 3px solid transparent;
-  border-radius: 25px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s;
 }
@@ -150,22 +153,41 @@ nav ul .account a:hover {
 .home #slider {
   margin-top: 20px;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  overflow-x: scroll;
 }
 .home #slider .slide {
   cursor: pointer;
+  position: relative;
 }
-.home #slider .slide .slide-content {
-  opacity: 1;
+.home #slider .slide .slide-content .slide-text {
   position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(64, 129, 188, 0.5);
+  height: 234px;
+  width: 246px;
+  border-radius: 10px;
+  opacity: 0;
 }
-.home #slider .slide .slide-content .slide-text h2 {
+.home #slider .slide .slide-content .slide-text .slide-title {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 80px;
+}
+.home #slider .slide .slide-content .slide-text .slide-title h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: white;
 }
-.home #slider .slide .slide-content .slide-text p {
+.home #slider .slide .slide-content .slide-text .slide-title p {
   font-size: 15px;
+  color: white;
+}
+.home #slider .slide .slide-content .slide-text:hover {
+  opacity: 1;
+  transition: all 0.4s;
 }
 .home #slider .slide img {
   height: 234px;
@@ -834,6 +856,37 @@ header img {
   width: 150px;
   font-family: MarianneBold;
   font-size: 16px;
+}
+
+.account-section {
+  padding: 0 7%;
+}
+.account-section .user-action {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.account-section h2 {
+  padding: 10px 0;
+}
+.account-section .commands-history {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.account-section .commands-history article {
+  padding: 0 30px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.account-section .commands-history article:nth-child(odd) {
+  background-color: #F5F1F1;
 }
 
 /**************************\

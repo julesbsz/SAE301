@@ -7,4 +7,35 @@
         <span><a href="/">Accueil</a> / Mon Compte</span>
         <h1>Mon Compte</h1>
     </header>
+
+    <section class="account-section">
+        <h2>Historique de vos commandes</h2>
+        <div class="commands-history">
+            <article>
+                <p>Commande n°1</p>
+                <p>Date de la commande : 01/03/2021</p>
+                <p>6 places achetées</p>
+                <a class="links" href="">Télécharger la facture</a>
+            </article>
+
+            <article>
+                <p>Commande n°1</p>
+                <p>Date de la commande : 01/03/2021</p>
+                <p>6 places achetées</p>
+                <a class="links" href="">Télécharger la facture</a>
+            </article>
+
+            <article>
+                <p>Commande n°1</p>
+                <p>Date de la commande : 01/03/2021</p>
+                <p>6 places achetées</p>
+                <a class="links" href="">Télécharger la facture</a>
+            </article>
+        </div>
+
+        <div class="user-action">
+            <a class="button" href="{{ path('app_logout') }}">Se déconnecter</a>
+            <a style="color: red" class="links" href="{{ path('app_delete_account', {'id': app.user.id}) }}">Supprimer mon compte</a>
+        </div>
+    </section>
 {% endblock %}

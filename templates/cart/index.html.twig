@@ -91,6 +91,7 @@
                     if(event.id == id) {
                         cookies.splice(index, 1);
 
+                        showToast("La place a été supprimée du panier", "#DC3545", 3000, "")
                         element.parentElement.parentElement.parentElement.remove();
                         cart -= element.quantity;
                         document.cookie = "cart="+JSON.stringify(cookies)+"; path=/";
@@ -178,6 +179,28 @@
                     `;
                 document.querySelector(".cart-checkout").innerHTML = checkout_html;
             }
+        }
+
+        function showToast(text, color, duration, destination) {
+            Toastify({
+                text: text,
+                duration: duration,
+                close: true,
+                destination: destination,
+                gravity: "bottom", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: color,
+                    paddingBottom: "14px",
+                    borderRadius: "10px"
+                },
+                offset: {
+                    x: 50, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
         }
     </script>
 {% endblock %}

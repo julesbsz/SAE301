@@ -24,9 +24,10 @@ class PaymentController extends AbstractController
         }
 
         if($request->get('status') === 'success') {
-            return $this->render('payment/success.html.twig');
-        } elseif($request->get('status') === 'cancel') {
-            return $this->render('payment/cancel.html.twig');
+            $user = $this->getUser();
+            return $this->render('payment/success.html.twig', [
+                'user' => $user,
+            ]);
         } else {
             $form = $this->createForm(PaymentFormType::class);
 
@@ -42,7 +43,8 @@ class PaymentController extends AbstractController
                 $order->setZipcode($data['zip']);
                 $order->setCountry($data['country']);
                 $order->setPhone($data['phone']);
-                $order->setUser($this->getUser());
+                $user = $this->getUser();
+                $order->setUser($user);
 
                 try {
                     $entityManager->persist($order);

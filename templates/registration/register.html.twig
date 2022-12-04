@@ -4,6 +4,8 @@
 
 {% block body %}
     <section class="login">
+        <section id="login-left"></section>
+
         <section id="login-right">
 
             {{ form_start(registrationForm) }}
@@ -42,8 +44,6 @@
                 <p>Déjà un compte ? <a href="{{ path('app_login') }}">S'identifier</a></p>
             {{ form_end(registrationForm) }}
         </section>
-
-        <section id="login-left"></section>
     </section>
 
     <script>
