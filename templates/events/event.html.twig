@@ -109,7 +109,7 @@
             if (index > -1) {
                 cookies[index].quantity += quantity;
             } else {
-                let description = '{{ event.description }}';
+                let description = `{{ event.description }}`;
                 let descriptionShort = description.substring(0, 100) + '...';
                 cookies.push({ 'id': id, 'name': '{{ event.name }}', 'quantity': quantity , 'price': price, 'picture': '{{ event.image }}', 'date': '{{ event.date }}', 'place': '{{ place.name }}', 'description': descriptionShort });
             }

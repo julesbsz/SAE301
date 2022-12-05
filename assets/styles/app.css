@@ -147,6 +147,13 @@ nav ul .account a:hover {
   transform: translateY(-3px);
 }
 
+.cgu {
+  padding: 0% 7% 0% 7%;
+}
+.cgu p {
+  padding: 1% 1% 1% 1%;
+}
+
 .home h1 {
   padding: 10px 7%;
   margin: 30px 0 0 0;
@@ -257,7 +264,34 @@ header img {
   padding: 0 7%;
   width: 100vw;
   display: flex;
-  flex-direction: column;
+  gap: 30px;
+}
+.search select {
+  width: 250px;
+  border: none;
+  border-bottom: 2px solid #787878;
+}
+.search > div {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  gap: 30px;
+}
+.search > div button {
+  background-color: white;
+  border-radius: 25px;
+  border: 2px solid #4081BC;
+  padding: 10px 30px;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-size: 18px;
+  color: #4081BC;
+}
+.search > div button:hover {
+  background-color: #4081BC;
+  color: white;
 }
 .search input {
   position: relative;
@@ -349,18 +383,19 @@ header img {
 
 .events {
   width: 100%;
-  padding: 40px 7%;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
 }
 .events .event {
+  width: 100%;
+  padding: 20px 7%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  gap: 40px;
   width: 100%;
 }
 .events .event img {

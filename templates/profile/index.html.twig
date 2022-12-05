@@ -25,6 +25,9 @@
             {% endfor %}
         </div>
 
+        <h2>Modifier vos informations</h2>
+        <p>Adresse mail : {{ user.email }}</p>
+
         <div class="user-action">
             <a class="button" href="{{ path('app_logout') }}">Se déconnecter</a>
             <a style="color: red" class="links" href="{{ path('app_delete_account', {'id': app.user.id}) }}">Supprimer mon compte</a>

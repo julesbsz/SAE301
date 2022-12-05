@@ -19,6 +19,7 @@ class ProfileController extends AbstractController
             $orders = $ordersRepository->findBy(['user' => $user]);
             return $this->render('profile/index.html.twig', [
                 'orders' => $orders,
+                'user' => $user
             ]);
         }
     }

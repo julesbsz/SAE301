@@ -4,7 +4,7 @@
 
 {% block body %}
     <header>
-        <span><a href="/">Accueil</a> / Lieux</span>
+        <span><a href="/">Accueil</a> / Les lieux mythiques</span>
         <h1>Les lieux</h1>
     </header>
 
@@ -14,13 +14,14 @@
 
     <section class="events">
         {% for lieu in places %}
-            <article class="event">
-                <div>
-                    <h2>{{ lieu.name }}</h2>
-                    <span>{{ lieu.address }} avec une capacité de : {{ lieu.capacity }} personnes  </span>
-                    {# <a class="button" href="{{ path('app_events', {id: event.id}) }}">En savoir plus</a> #}
-                </div>
-            </article>
+            {% if lieu.capacity > 0 %}
+                <article class="event">
+                    <div>
+                        <h2>{{ lieu.name }}</h2>
+                        <p><span>{{ lieu.address }}</span> avec une capacité de <span>{{ lieu.capacity }}</span> personnes</p>
+                    </div>
+                </article>
+            {% endif %}
         {% endfor %}
     </section>
 

@@ -8,9 +8,15 @@
         <h1>Nos Événements</h1>
     </header>
 
-{#    <section class="search">#}
-{#        <input type="search" placeholder="Rechercher un événement, un genre ou une date...">#}
-{#    </section>#}
+    <section class="search">
+        <input type="search" onkeyup="search()" id="searchInput" placeholder="Rechercher un événement, un genre ou une date...">
+        <select name="order" id="filter">
+            <option value="" disabled selected>Trier par</option>
+            <option value="name">Nom</option>
+            <option value="date">Date</option>
+            <option value="genre">Genre</option>
+        </select>
+    </section>
 
     <section class="events">
         {% for event in events %}
@@ -18,7 +24,8 @@
                 <img class="{{ 'link-' ~ event.id }}" src="{{ asset("build/" ~ event.image) }}" alt={{ event.name }}>
                 <div>
                     <h2>{{ event.name }}</h2>
-                    <span>{{ event.date }}<p>Avec une capacité de : </p>{{ event.genre }}</span>
+                    <span>{{ event.date }}</span>
+                    <span style="margin-top: -15px">{{ event.genre }}</span>
                     <p>{{ event.description }}</p>
                     <a class="button" href="{{ path('app_events', {id: event.id}) }}">En savoir plus</a>
                 </div>
@@ -38,5 +45,27 @@
                 window.location.href = '/evenements/' + link.split('-')[1];
             });
         });
+
+        function search() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toUpperCase();
+
+            let events = document.querySelector(".events");
+            let articles = events.getElementsByTagName("article");
+
+            for (let i = 0; i < articles.length; i++) {
+                let name = articles[i].childNodes.item(3).childNodes.item(1).textContent;
+                let date = articles[i].childNodes.item(3).childNodes.item(3).textContent;
+                let genre = articles[i].childNodes.item(3).childNodes.item(5).textContent;
+
+                if (name || date || genre) {
+                    if (name.toUpperCase().indexOf(filter) > -1 || date.toUpperCase().indexOf(filter) > -1 || genre.toUpperCase().indexOf(filter) > -1) {
+                        articles[i].style.display = "";
+                    } else {
+                        articles[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 {% endblock %}
