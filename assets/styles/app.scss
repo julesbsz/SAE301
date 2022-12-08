@@ -464,6 +464,39 @@ header {
   }
 }
 
+.lieux {
+
+  min-height: 50vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 30px 30px;
+  justify-content: space-evenly;
+
+  .lieu {
+    color: white;
+    background-color: #3F80BC;
+    position: relative;
+    padding-top: 1vh;
+    max-width: 500px;
+    border-radius: 20px;
+    flex: 1 1 500px;
+    text-align: center;
+    margin-bottom: 3vh;
+    padding-bottom: 1vh;
+
+    span {
+      color: rgb(234, 234, 234);
+    }
+
+    p {
+      color: rgb(234, 234, 234);
+    }
+  }
+
+
+}
+
 .events {
   width: 100%;
   padding: 40px 0;
