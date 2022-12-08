@@ -1135,14 +1135,17 @@ footer {
 .places {
   width: 100vw;
   display: flex;
-  padding: 40px 7%;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px 7%;
   flex-wrap: wrap;
+  gap: 20px;
 
   .place {
-    width: 50%;
-    height: 150px;
+    width: 35%;
+    height: auto;
     transition: all 0.3s;
-    padding: 0 10px;
+    padding: 20px 10px;
 
     &:hover {
       background-color: #F4F1F1;
