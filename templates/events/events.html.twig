@@ -10,12 +10,15 @@
 
     <section class="search">
         <input type="search" onkeyup="search()" id="searchInput" placeholder="Rechercher un événement, un genre ou une date...">
-        <select name="order" id="filter">
-            <option value="" disabled selected>Trier par</option>
-            <option value="name">Nom</option>
-            <option value="date">Date</option>
-            <option value="genre">Genre</option>
-        </select>
+{#        <select name="order" id="filter">#}
+{#            <option id="filter" value="" disabled selected>#}
+{#                <p>#}
+{#                    <i class="fa-solid fa-filter"></i> Trier par</option>#}
+{#                </p>#}
+{#            <option value="name">Nom</option>#}
+{#            <option value="date">Date</option>#}
+{#            <option value="genre">Genre</option>#}
+{#        </select>#}
     </section>
 
     <section class="events">
@@ -35,6 +38,7 @@
 
     <script>
         const links = [];
+        const filter = document.getElementById('filter');
 
         document.querySelectorAll('.event').forEach(event => {
             links.push(event.querySelector('img').classList[0]);
@@ -67,5 +71,28 @@
                 }
             }
         }
+
+        // filter.onchange = function filtering() {
+        //     let events = document.querySelector(".events");
+        //     let articles = events.getElementsByTagName("article");
+        //
+        //     for (let i = 0; i < articles.length; i++) {
+        //         let name = articles[i].childNodes.item(3).childNodes.item(1).textContent;
+        //         let date = articles[i].childNodes.item(3).childNodes.item(3).textContent;
+        //         let genre = articles[i].childNodes.item(3).childNodes.item(5).textContent;
+        //
+        //         console.log(name)
+        //
+        //         if (name || date || genre) {
+        //             if (filter.value === 'name') {
+        //                 articles[i].style.display = "";
+        //             } else if (filter.value === 'date') {
+        //                 articles[i].style.display = "";
+        //             } else if (filter.value === 'genre') {
+        //                 articles[i].style.display = "";
+        //             }
+        //         }
+        //     }
+        // }
     </script>
 {% endblock %}

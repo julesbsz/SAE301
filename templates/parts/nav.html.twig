@@ -15,16 +15,53 @@
             <li><a class="button" href="{{ path('app_login') }}">S'identifier</a></li>
         {% endif %}
     </ul>
+
+    <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</nav>
+
+<nav class="nav-mobile">
+    <ul>
+        <li><a href="{{ path('app_home') }}" class="{{ app.request.get('_route') == 'app_home' ? 'link-active' }}">Accueil</a></li>
+        <li><a href="{{ path('app_events') }}" class="{{ app.request.get('_route') == 'app_events' ? 'link-active' }}">Événements</a></li>
+        <li><a href="{{ path('app_lieux') }}" class="{{ app.request.get('_route') == 'app_lieux' ? 'link-active' }}">Lieux</a></li>
+        <li><a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') == 'app_contact' ? 'link-active' }}">Contact & Informations</a></li>
+
+        {% if app.user %}
+            <div class="account">
+                <a href="{{ path('app_profile') }}"><i class="fa-solid fa-user"></i></a>
+            </div>
+        {% else %}
+            <li><a class="button" href="{{ path('app_login') }}">S'identifier</a></li>
+        {% endif %}
+    </ul>
 </nav>
 
 <script>
     const nav = document.querySelector('nav');
-
     addEventListener('scroll', () => {
         if(window.scrollY <= 10) {
             nav.style.boxShadow = 'none';
         } else {
             nav.style.boxShadow = '3px 3px 11.5px -5.5px #dddddd';
+        }
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const navMobile = document.querySelector('.nav-mobile');
+    const html = document.querySelector('html');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('opened');
+        navMobile.classList.toggle('nav-opened');
+
+        if(html.style.overflow == 'hidden') {
+            html.style.overflow = 'auto';
+        } else {
+            html.style.overflow = 'hidden';
         }
     });
 </script>

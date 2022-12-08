@@ -125,6 +125,11 @@ nav {
     height: 60%;
   }
 
+  .nav-mobile,
+  .hamburger {
+    display: none;
+  }
+
   ul {
     list-style: none;
     display: flex;
@@ -188,8 +193,6 @@ nav {
   a {
     margin: 0 0 30px 7%;
   }
-
-
 
   #gradient {
     background: linear-gradient(0.25turn, RGB(226, 239, 249), white);
@@ -320,9 +323,14 @@ header {
   gap: 30px;
 
   select {
-    width: 250px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
     border: none;
     border-bottom: 2px solid $gray-color;
+    color: $gray-color;
+    background-color: transparent;
+    text-transform: uppercase;
   }
 
   & > div {
@@ -610,96 +618,102 @@ header {
 
 #contact {
   width: 100vw;
-
-#block {
   display: flex;
+  align-items: center;
   justify-content: center;
 
-  #content-block {
+  #contact-container {
+    margin: 20px;
+    padding: 50px;
+    width: 850px;
+    background-color: $main-color;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
-    background-color: $main-color;
-    height: 50vh;
-    width: 60vw;
-    margin-bottom: 5vh;
-  
+    justify-content: center;
+
     h2 {
       color: white;
-      font-family: MarianneBold;
-      font-size: 30px;
-      text-align: center;
-      padding: 20px 0px 20px 0px;
+      margin-bottom: 30px;
     }
-    p{
+
+    p {
       color: white;
-      font-size: 18px;
-      margin: 0;
-      padding: 2px 30px 2px 30px;
+    }
+
+    ul {
+      padding-left: 30px;
+      padding-top: 15px;
+      color: white;
     }
   }
-}  
 }
+
 footer {
-  margin-top: 5vh;
+  margin: 5vh 0;
   width: 100vw;
   display: flex;
   flex-direction: row;
 
-  
+  h3 {
+    color: black;
+  }
 
   #réseaux {
-
-    width: 33%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
+    gap: 30px;
 
     img {
       width: 300px;
-
     }
 
     ul {
       display: flex;
       flex-direction: row;
       list-style: none;
-      
+      gap: 20px;
 
-      img {
-        width: 24px;
-        margin: 10px;
-        margin-top: 30px;
+      i {
+        font-size: 24px;
+        color: $main-color;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+
+    section {
+      a {
+        transition: all 0.3s;
+
+        &:hover {
+          color: $main-color;
+        }
+
+        &.link-active {
+          color: $main-color;
+        }
       }
     }
   }
 
   #infos {
-
     width: 33%;
-    align-items: center;
     display: flex;
+    align-items: center;
     flex-direction: column;
-
-    .title_footer::before {
-      content: '';
-      display: inline-block;
-      height: 1.4rem;
-      width: 0.2rem;
-      background: $main-color;
-      margin-right: 1rem;
-  }
-
-  .title_footer {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+    justify-content: center;
   }
   
   a {
     text-decoration: none;
     color: #787878;
-  }
   }
 
   #map {
@@ -708,35 +722,23 @@ footer {
     width: 33%;
     align-items: center;
 
-    .title_footer {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-  }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
 
+      a {
+        transition: all 0.3s;
 
-
-
-.title_footer::before {
-  content: '';
-  display: inline-block;
-  height: 1.4rem;
-  width: 0.2rem;
-  background: $main-color;
-  margin-right: 1rem;
-}
-    img {
-      width: 120px
-
-    }
-
-    img:hover {
-      transform: scale(1.1);
-      transition: all 0.7s;
+        &:hover {
+          color: $main-color;
+        }
+      }
     }
 
   }
-
 }
 
 #event {
@@ -1130,6 +1132,24 @@ footer {
   }
 }
 
+.places {
+  width: 100vw;
+  display: flex;
+  padding: 40px 7%;
+  flex-wrap: wrap;
+
+  .place {
+    width: 50%;
+    height: 150px;
+    transition: all 0.3s;
+    padding: 0 10px;
+
+    &:hover {
+      background-color: #F4F1F1;
+    }
+  }
+}
+
 
 /**************************\
   Basic Modal Styles
@@ -1287,3 +1307,5 @@ footer {
 .micromodal-slide .modal__overlay {
   will-change: transform;
 }
+
+@import "responsive";

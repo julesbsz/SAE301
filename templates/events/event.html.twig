@@ -125,25 +125,46 @@
         });
 
         function showToast(text, color, duration, destination) {
-            Toastify({
-                text: text,
-                duration: duration,
-                close: true,
-                destination: destination,
-                gravity: "bottom", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                    background: color,
-                    paddingBottom: "14px",
-                    borderRadius: "10px"
-                },
-                offset: {
-                    x: 100, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                    y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
-                },
-                onClick: function(){} // Callback after click
-            }).showToast();
+            if(window.screen.width <= 900) {
+                Toastify({
+                    text: text,
+                    duration: duration,
+                    close: true,
+                    destination: destination,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: color,
+                        paddingBottom: "14px",
+                        borderRadius: "10px"
+                    },
+                    offset: {
+                        y: 75 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+            } else {
+                Toastify({
+                    text: text,
+                    duration: duration,
+                    close: true,
+                    destination: destination,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: color,
+                        paddingBottom: "14px",
+                        borderRadius: "10px"
+                    },
+                    offset: {
+                        x: 100, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                        y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+            }
         }
     </script>
 {% endblock %}
