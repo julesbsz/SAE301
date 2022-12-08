@@ -9,14 +9,18 @@
 
         <p style="margin-top: 40px">
             Merci pour votre commande, vous pouvez télécharger le récapitulatif de la commande directement dans la page de votre profil.<br>
-            Un mail de confirmation a été également envoyé à {{ user.email }}
+            Vous aller être automatiquement redirigé vers votre profil dans 5 secondes.
         </p>
 
-        <a style="margin-top: 15px" class="links" href="{{ path('app_home') }}">Retour à l'accueil</a>
+        <a style="margin-top: 15px" class="links" href="{{ path('app_profile') }}">Voir mon profil</a>
     </header>
 
     <script>
         // reset cart in cookies
         document.cookie = 'cart=; Max-Age=0; path=/; domain=' + location.hostname;
+
+        setTimeout(function() {
+            window.location.href = "{{ path('app_profile') }}";
+        }, 5000);
     </script>
 {% endblock %}

@@ -4,24 +4,48 @@
 
 {% block body %}
     <header>
-        <span><a href="/">Accueil</a> / Lieux</span>
+        <span><a href="/">Accueil</a> / Les lieux mythiques</span>
         <h1>Les lieux</h1>
     </header>
 
-{#    <section class="search">#}
-{#        <input type="search" placeholder="Rechercher un lieux, une date ou une adresse...">#}
-{#    </section>#}
+    <section class="search">
+        <input type="search" onkeyup="search()" id="searchInput" placeholder="Rechercher un lieu ou une adresse...">
+    </section>
 
-    <section class="events">
+    <section class="places">
         {% for lieu in places %}
-            <article class="event">
-                <div>
-                    <h2>{{ lieu.name }}</h2>
-                    <span>{{ lieu.address }} avec une capacité de : {{ lieu.capacity }} personnes  </span>
-                    {# <a class="button" href="{{ path('app_events', {id: event.id}) }}">En savoir plus</a> #}
-                </div>
-            </article>
+            {% if lieu.capacity > 0 %}
+                <article class="place">
+                    <div>
+                        <h2>{{ lieu.name }}</h2>
+                        <p><span>{{ lieu.address }}</span> avec une capacité de <span>{{ lieu.capacity }}</span> personnes</p>
+                    </div>
+                </article>
+            {% endif %}
         {% endfor %}
     </section>
+
+    <script>
+        function search() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toUpperCase();
+
+            let places = document.querySelector(".places");
+            let articles = places.getElementsByTagName("article");
+
+            for (let i = 0; i < articles.length; i++) {
+                let name = articles[i].children[0].children[0].textContent;
+                let address = articles[i].children[0].children[1].children[0].textContent;
+
+                if (name || address) {
+                    if (name.toUpperCase().indexOf(filter) > -1 || address.toUpperCase().indexOf(filter) > -1) {
+                        articles[i].style.display = "";
+                    } else {
+                        articles[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
 {% endblock %}

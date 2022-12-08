@@ -19,8 +19,18 @@ class LieuxController extends AbstractController
             if($places === null) {
                 throw $this->createNotFoundException('Aucun lieu trouvé');
             } else {
+                $placeNames = [];
+                $allPlaces = [];
+
+                foreach($places as $place) {
+                    if(!in_array($place->getName(), $placeNames)) {
+                        $placeNames[] = $place->getName();
+                        $allPlaces[] = $place;
+                    }
+                }
+
                 return $this->render('lieux/lieux.html.twig', [
-                    'places' => $places,
+                    'places' => $allPlaces,
                 ]);
             }
         } else {
@@ -28,10 +38,8 @@ class LieuxController extends AbstractController
             if($place === null) {
                 throw $this->createNotFoundException('Aucun lieu trouvé');
             } else {
-                $events = $place->getEvents();
                 return $this->render('lieux/lieux.html.twig', [
                     'place' => $place,
-                    'events' => $events,
                 ]);
             }
         }
