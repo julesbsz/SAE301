@@ -12,16 +12,16 @@
 {#        <input type="search" placeholder="Rechercher un lieux, une date ou une adresse...">#}
 {#    </section>#}
 
-    <section class="events">
+    <section class="lieux">
         {% for lieu in places %}
             {% if lieu.capacity > 0 %}
-                <article class="event">
-                    <div>
+                <article class="lieu">
+                    <div id="container-lieu">
                         <h2>{{ lieu.name }}</h2>
                         <p><span>{{ lieu.address }}</span> avec une capacité de <span>{{ lieu.capacity }}</span> personnes</p>
                     </div>
                 </article>
-            {% endif %}
+            {% endif %} 
         {% endfor %}
     </section>
 
