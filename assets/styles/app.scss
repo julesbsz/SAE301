@@ -108,6 +108,10 @@ p {
   }
 }
 
+.nav-mobile {
+  display: none;
+}
+
 nav {
   position: fixed;
   z-index: 10;
@@ -125,7 +129,6 @@ nav {
     height: 60%;
   }
 
-  .nav-mobile,
   .hamburger {
     display: none;
   }
