@@ -8,6 +8,7 @@
         <li><a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') == 'app_contact' ? 'link-active' }}">Contact & Informations</a></li>
 
         {% if app.user %}
+            <li><a href="{{ path('admin') }}">Administration</a></li>
             <div class="account">
                     <a href="{{ path('app_profile') }}"><i class="fa-solid fa-user"></i></a>
             </div>

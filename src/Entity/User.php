@@ -81,6 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if (!in_array(static::ROLE_DEFAULT, $roles)) {
             $roles[] = static::ROLE_DEFAULT;
         }
+
         return $roles;
     }
 
